@@ -12,62 +12,77 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
-  	chatters++;
-    socket.nickname = "MSNLover" + chatters;
-   	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
-   	socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
-    io.emit('alert', 'chatters:' + chatters);
-    console.log(chatters);
-    socket.emit('alert', 'nick:' + socket.nickname);
-    io.emit('greeting', socket.nickname + " has joined the chat.");
+    init(io, socket);
 
-  	socket.on('disconnect', function(){
-      chatters--;
-      io.emit('alert', 'chatters:' + chatters);
-      io.emit('greeting', socket.nickname + " has left the chat.");
-      console.log(socket.nickname + ' disconnected');
+  socket.on('chat message', function(msg){ 
+  		handleMessage(io, socket, msg);
+  	});
+  
+  socket.on('disconnect', function(){
+      disconnect(io, socket);
     });
 
-socket.on('chat message', function(msg){ 
-		var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-   			return '&#'+i.charCodeAt(0)+';';
-		});
+});
+
+function init(io, socket)
+{
+  chatters++;
+  socket.nickname = "MSNLover" + chatters;
+  console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
+  socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
+  io.emit('alert', 'chatters:' + chatters);
+  console.log(chatters);
+  socket.emit('alert', 'nick:' + socket.nickname);
+  io.emit('greeting', socket.nickname + " has joined the chat.");
+}
+
+function disconnect(io, socket)
+{
+  chatters--;
+  io.emit('alert', 'chatters:' + chatters);
+  io.emit('greeting', socket.nickname + " has left the chat.");
+  console.log(socket.nickname + ' disconnected');
+}
+
+function handleMessage(io, socket, msg)
+{
+  var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return '&#'+i.charCodeAt(0)+';';
+    });
       if(isLink(msg))
       {
         msg = createLink(msg);
       }
-  		console.log("the split: " + msg.split(" ")[0]);
-  		var firstChar = msg.charAt(0);
-  		if(isCommand(firstChar))
-  		{
+      console.log("the split: " + msg.split(" ")[0]);
+      var firstChar = msg.charAt(0);
+      if(isCommand(firstChar))
+      {
         var cmd = msg.split(" ")[0];
-  			switch(cmd)
-  			{
-  				case '/nick':
-  					var newNick = msg.split(" ")[1];
+        switch(cmd)
+        {
+          case '/nick':
+            var newNick = msg.split(" ")[1];
             if(newNick != undefined)
             {
               changeNick(socket, newNick);
             }
-  					break;
+            break;
           case '!help':
             msg = 'Change nick with /nick nick, you can resize, move (click and drag on the blue bar) and mini/maximize window and nudge. Press Start to reset window position. Press a display picture to change to random new one. Git: <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">xp-messenger-webbchat</a>';
             socket.emit('greeting', msg);
-  			}
-  		}
+        }
+      }
 
-  		else
-  		{
-  			if(msg != "" && msg != " ")
-  			{
-  				msg = socket.nickname + ": " + msg;
-				io.emit('chat message', msg);
-				console.log(msg);
-			}
-		}
-	});
-});
-
+      else
+      {
+        if(msg != "" && msg != " ")
+        {
+          msg = socket.nickname + ": " + msg;
+          io.emit('chat message', msg);
+          console.log(msg);
+        }
+    }
+}
 function isCommand(string)
 {
 	var cmds = ["/", "!"];
