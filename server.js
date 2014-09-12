@@ -27,7 +27,11 @@ io.on('connection', function(socket){
 function init(io, socket)
 {
   chatters++;
-  socket.nickname = "MSNLover" + chatters;
+  if(!nickTaken("MSNLover" + chatters))
+  {
+    socket.nickname = "MSNLover" + Math.floor((Math.random() * 100)) + chatters;
+  }
+  
   console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
   socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
   io.emit('alert', 'chatters:' + chatters);
