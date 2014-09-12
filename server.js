@@ -79,15 +79,14 @@ function handleMessage(io, socket, msg)
         }
       }
 
-      if(isLink(msg))
-      {
-        msg = createLink(msg);
-      }
-
       else
       {
         if(msg != "" && msg != " ")
         {
+          if(isLink(msg))
+          {
+            msg = createLink(msg);
+          }
           msg = socket.nickname + ": " + msg;
           io.emit('chat message', msg);
           console.log(msg);
@@ -190,10 +189,17 @@ function createSpotifyWidget(msg)
   {
     id = msg.split("spotify.com/track/")[1];
   }
-  else if(msg.indexOf("spotify:track") > -1)
+
+  else if(msg.indexOf("spotify:track:") > -1)
   {
     id = msg.split("spotify:track:")[1];
   }
+
+  if(id.split(" ")[0])
+  {
+     id = id.split(" ")[0];
+  }
+
   console.log(id);
   if(id != "")
   {
