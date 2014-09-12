@@ -15,7 +15,7 @@ io.on('connection', function(socket){
   	socket.nickname = "MSNLover" + chatters;
   	chatters++;
    	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
-   	socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick');
+   	socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
     socket.emit('alert', 'chatters:' + chatters);
     socket.emit('alert', 'nick:' + socket.nickname);
 
@@ -43,6 +43,9 @@ socket.on('chat message', function(msg){
               changeNick(socket, newNick);
             }
   					break;
+          case '!help':
+            msg = 'Change nick with /nick nick, you can resize, move and mini/maximize window and nudge. Press Start to reset window position. Press a display picture to change to random new one. Git: <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">xp-messenger-webbchat</a>';
+            socket.emit('greeting', msg);
   			}
   		}
 
