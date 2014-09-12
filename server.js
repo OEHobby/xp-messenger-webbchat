@@ -49,10 +49,6 @@ function handleMessage(io, socket, msg)
   var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
         return '&#'+i.charCodeAt(0)+';';
     });
-      if(isLink(msg))
-      {
-        msg = createLink(msg);
-      }
       console.log("the split: " + msg.split(" ")[0]);
       var firstChar = msg.charAt(0);
       if(isCommand(firstChar))
@@ -71,7 +67,21 @@ function handleMessage(io, socket, msg)
             msg = 'Change nick with /nick nick, you can resize, move (click and drag on the blue bar) and mini/maximize window and nudge. ';
             msg += 'Press Start to reset window position. Press a display picture to change to random new one. <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">Project on Git</a>';
             socket.emit('greeting', msg);
+            break;
+          case '!send':
+            var widget = createSpotifyWidget(msg);
+            if(widget != 0)
+            {
+              widget = socket.nickname + ": " + widget;
+              io.emit('chat message', widget)
+            }
+            break;
         }
+      }
+
+      if(isLink(msg))
+      {
+        msg = createLink(msg);
       }
 
       else
@@ -170,4 +180,25 @@ function createLink(msg) //fix problem with the need of space after link. Fix mo
   msg = msg.replace(link, "<a href='" + link + "' target='_blank'>" + link + "</a>");
 
   return msg;
+}
+
+function createSpotifyWidget(msg)
+{
+  var widget = 0;
+  var id = "";
+  if(msg.indexOf("spotify.com/track/") > -1)
+  {
+    id = msg.split("spotify.com/track/")[1];
+  }
+  else if(msg.indexOf("spotify:track") > -1)
+  {
+    id = msg.split("spotify:track:")[1];
+  }
+  console.log(id);
+  if(id != "")
+  {
+    widget = "<iframe src='https://embed.spotify.com/?uri=spotify:track:" + id + "' width='500px' height='80px' frameborder='0' allowtransparency='true'></iframe>";
+  }
+
+  return widget;
 }
