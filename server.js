@@ -81,9 +81,11 @@ function handleMessage(io, socket, msg)
             }
             break;
           case '!nudge':
-            {
-              io.emit('alert', "nudge");
-            }
+            io.emit('alert', "nudge");
+            break;
+          case '/msg':
+            privMsg(socket, msg);
+            break;
         }
       }
 
@@ -215,4 +217,26 @@ function createSpotifyWidget(msg)
   }
 
   return widget;
+}
+
+function privMsg(socket, msg, namespace)
+{
+  var clients = findClientsSocket();
+  var ns = io.of(namespace ||"/");
+
+  var nick = msg.split(" ")[1];
+  msg = msg.slice( msg.indexOf(msg.split(" ")[2]), msg.length );
+  
+
+  if(ns)
+  {
+    for (var i in clients)
+    {
+      if(clients[i].nickname == nick)
+      {
+        console.log(clients[i].nickname + " got a priv msg from " + socket.nickname);
+        clients[i].emit('privmsg', socket.nickname + ": " + msg);
+      }
+    }
+  }
 }

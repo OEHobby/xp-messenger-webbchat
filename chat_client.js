@@ -21,6 +21,14 @@ socket.on('greeting', function(msg){
 	autoScroll()
 });
 
+socket.on('privmsg', function(msg){
+	console.log("got a priv message from " + nick);
+	var nick = msg.split(":")[0];
+	msg = msg.split(": ")[1];
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said in private:</p>' + '<p class="chatMessage">' + msg + '.</p>');
+	autoScroll()
+});
+
 socket.on('alert', function(msg){
 	var alert = msg.split(":")[0];
 	var info = msg.split(":")[1];
