@@ -12,11 +12,9 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
-    var address = socket.handshake.address;
-
   	socket.nickname = "MSNLover" + chatters;
   	chatters++;
-   	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + address.address);
+   	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
    	socket.emit('greeting', 'GlaDos: Howdy, ' + socket.nickname + ' . Welcome to this nostalgia trip! You change your nick with /nick nick');
 
   	socket.on('disconnect', function(){
