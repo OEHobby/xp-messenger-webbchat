@@ -46,5 +46,7 @@ function nudge(jump)
 
 var vibber = document.getElementById('smiley-symbol-vibb');
 vibber.addEventListener("click", function() {
-		nudge(10);nudge(10);nudge(10);
+		//nudge(10);nudge(10);nudge(10);
+		$("#m").val('!nudge');
+		$("form").submit();
 });
