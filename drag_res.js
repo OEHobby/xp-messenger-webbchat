@@ -52,6 +52,7 @@ xpbar.addEventListener("mousedown", function() {
 xpbar.addEventListener("mouseup", function() {
 	$( "#window" ).draggable( "option", "disabled", true );
 });
+
 /*to fix bug that appears if you put the window up so the bar doesnt show. 
 only with mouse up since you should be able to move it down again*/
 var win = document.getElementById('window');
