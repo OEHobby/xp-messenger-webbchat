@@ -29,6 +29,10 @@ socket.on('chat message', function(msg){
 		var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
    			return '&#'+i.charCodeAt(0)+';';
 		});
+      if(isLink(msg))
+      {
+        msg = createLink(msg);
+      }
   		console.log("the split: " + msg.split(" ")[0]);
   		var firstChar = msg.charAt(0);
   		if(isCommand(firstChar))
@@ -123,3 +127,28 @@ function findClientsSocket(roomId, namespace) {
     return res;
 }
 
+function isLink(msg)
+{
+  var bool = false;
+  if( msg.indexOf("http://") > -1)
+  {
+    bool = true;
+    console.log("found http://");
+  }
+  return bool;
+}
+
+function createLink(msg) //fix problem with the need of space after link. Fix more than one link.
+{
+  var linkStart;
+  var link;
+  var linkEnd = 0;
+  linkStart = msg.indexOf("http://");
+  console.log("found one link");
+  linkEnd = msg.indexOf(" ", linkStart);
+  link = msg.slice(linkStart, (linkEnd+1));
+  console.log(link);
+  msg = msg.replace(link, "<a href='" + link + "'>" + link + "</a>");
+
+  return msg;
+}
