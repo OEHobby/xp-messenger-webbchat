@@ -70,17 +70,25 @@
 <script src="//oskaremilsson.se/chat/textarea.js"></script>
 
 <script>
-$('#profilePicture1').click(function (){
+
+function newDisplayPicture(id)
+{
 	var offset = Math.floor((Math.random() * 23));
-	$('#profilePicture1').css('background-position', '-' + offset*85 +'px 0');
+	$(id).css('background-position', '-' + offset*85 +'px 0');
+}
+
+$('#profilePicture1').click(function (){
+	newDisplayPicture('#profilePicture1');
 });
 
 $('#profilePicture2').click(function (){
-	var offset = Math.floor((Math.random() * 23));
-	$('#profilePicture2').css('background-position', '-' + offset*85 +'px 0');
+	newDisplayPicture('#profilePicture1');
 });
 
-</script>
+//random at init
+$(window).load(newDisplayPicture('#profilePicture1'));
+$(window).load(newDisplayPicture('#profilePicture2'));
 
+</script>
 </body>
 </html>
