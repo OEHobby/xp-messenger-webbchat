@@ -24,6 +24,7 @@ io.on('connection', function(socket){
   	socket.on('disconnect', function(){
       chatters--;
       io.emit('alert', 'chatters:' + chatters);
+      io.emit('greeting', socket.nickname + " has left the chat.");
       console.log(socket.nickname + ' disconnected');
     });
 
