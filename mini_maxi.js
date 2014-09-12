@@ -22,7 +22,7 @@ pickup.addEventListener("click", function(){
 
 var offset = 7;
 var maxi = document.getElementById("maximize-button");
-maxi.addEventListener("click", function(){maximize(offser);});
+maxi.addEventListener("click", function(){maximize(offset);});
 
 function maximize(offset)
 {
