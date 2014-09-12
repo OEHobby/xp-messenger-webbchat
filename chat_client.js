@@ -11,7 +11,7 @@ socket.on('chat message', function(msg){
 	var nick = msg.split(":")[0];
 	console.log("nick: " + nick);
 	var message = msg.split(": ")[1];
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' säger:</p>' + '<p class="chatMessage">' + message + '</p>');
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + message + '</p>');
 	$("#chatWindow").scrollTop($("#chatWindow")[0].scrollHeight);
 	console.log($("#chatWindow")[0].scrollHeight);
   });
@@ -20,7 +20,7 @@ socket.on('greeting', function(msg){
 	var nick = msg.split(" ")[0];
 	var message = msg.split(": ")[1];
 	console.log(nick);
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' säger:</p>' + '<p class="chatMessage">' + message + '</p>');
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + message + '</p>');
 });
 
 socket.on('alert', function(msg){
