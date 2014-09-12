@@ -3,6 +3,9 @@ body
 	margin:  0 0 0 0;
 	padding: 0 0 0 0;
 	background: url("img/xp.jpg");
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 #window.hide
@@ -556,6 +559,12 @@ body
 	font-family: arial;
 	color: #FFFFFF;
 	font-size: 10pt;
+}
+
+.program-title a
+{
+	color: #FFFFFF;
+	text-decoration: none;
 }
 
 .chatTitle

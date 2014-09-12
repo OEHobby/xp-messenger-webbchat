@@ -20,26 +20,27 @@ pickup.addEventListener("click", function(){
     });
 });
 
+var offset = 7;
 var maxi = document.getElementById("maximize-button");
-maxi.addEventListener("click", function(){maximize();});
+maxi.addEventListener("click", function(){maximize(offser);});
 
-function maximize()
+function maximize(offset)
 {
 	//maximize window
-	$("#window").width($(window).width() - 12);
-	$("#window").height($(window).height() - 10);
+	$("#window").width($(window).width() - offset);
+	$("#window").height($(window).height() - offset);
 	$("#window").offset({top:0, left:0});
 	//maximize head, xp-bar, bottom, textfield, smiley-bar
-	$("#head").width($(window).width() - 12);
-	$("#bottomBar").width($(window).width() - 12);
-	$("#xp-bar").width($(window).width() - 12);
-	$("#nickwrapper").width($(window).width() - 12);
+	$("#head").width($(window).width() - offset);
+	$("#bottomBar").width($(window).width() - offset);
+	$("#xp-bar").width($(window).width() - offset);
+	$("#nickwrapper").width($(window).width() - offset);
 
-	$("#text-field").width( $(window).width() - $("#rightBar").width()  - 12);
-	$("#text-field input[type=text]").width( $(window).width() - $("#rightBar").width()  - 12) ;
-	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - 12);
-	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - 12);
-	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height())  - 10);
-	$("#right-bar").height($(window).height() - 10);
+	$("#text-field").width( $(window).width() - $("#rightBar").width()  - offset);
+	$("#text-field input[type=text]").width( $(window).width() - $("#rightBar").width()  - offset) ;
+	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - offset);
+	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - offset);
+	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height())  - offset);
+	$("#right-bar").height($(window).height() - offset);
 
 }

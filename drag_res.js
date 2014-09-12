@@ -51,3 +51,7 @@ xpbar.addEventListener("mousedown", function() {
 xpbar.addEventListener("mouseup", function() {
 	$( "#window" ).draggable( "option", "disabled", true );
 });
+
+var pos = $('#window').offset();
+document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - offset ) + "px";
+document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - offset ) + "px";

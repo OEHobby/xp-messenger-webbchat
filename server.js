@@ -15,11 +15,15 @@ io.on('connection', function(socket){
   	socket.nickname = "MSNLover" + chatters;
   	chatters++;
    	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
-   	socket.emit('greeting', 'GlaDos: Howdy, ' + socket.nickname + ' . Welcome to this nostalgia trip! You change your nick with /nick nick');
+   	socket.emit('greeting', 'GlaDos: Howdy, ' + socket.nickname + '. Welcome to this nostalgia trip! You change your nick with /nick nick');
+    socket.emit('alert', 'chatters:' + chatters);
+    socket.emit('alert', 'nick:' + socket.nickname);
 
   	socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+      chatters--;
+      socket.emit('alert', 'chatters:' + chatters);
+      console.log(socket.nickname + ' disconnected');
+    });
 
 socket.on('chat message', function(msg){ 
 		var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
@@ -109,7 +113,6 @@ function findClientsSocket(roomId, namespace) {
         for (var i in ns.connected) 
         {
             res.push(ns.connected[i]);
-            console.log("Found: " + ns.connected[i].nickname);
         }
     }
     return res;

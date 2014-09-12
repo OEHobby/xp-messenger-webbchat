@@ -17,18 +17,23 @@ socket.on('chat message', function(msg){
   });
 
 socket.on('greeting', function(msg){
-	var nick = msg.split(" ")[2];
+	var nick = msg.split(" ")[0];
 	var message = msg.split(": ")[1];
 	console.log(nick);
-	$('.nickName').html(nick);
-	$('.program-title').html("MSN Messenger - " + nick  + " - (online)");
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' säger:</p>' + '<p class="chatMessage">' + message + '</p>');
 });
 
 socket.on('alert', function(msg){
-	if(msg.split(":")[0] == "nick")
+	var alert = msg.split(":")[0];
+	var info = msg.split(":")[1];
+	switch(alert)
 	{
-		$('.nickName').html(msg.split(":")[1]);
-		$('.program-title').html("MSN Messenger - " + msg.split(":")[1]  + " - (online)");
+		case 'nick':
+			$('.nickName').html(info);
+			$('.program-title').html("MSN Messenger - " + info + " - (online)")
+			break;
+		case 'chatters':
+			$('.nickStatus').html("It is: " + info + " online right now.");
+			break;
 	}
 });
