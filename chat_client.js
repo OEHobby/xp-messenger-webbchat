@@ -33,6 +33,9 @@ socket.on('alert', function(msg){
 		case 'chatters':
 			$('.nickStatus').html("It's " + info + " online right now.");
 			break;
+		case 'nudge':
+			nudge(10);
+			break;
 	}
 });
 

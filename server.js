@@ -73,9 +73,13 @@ function handleMessage(io, socket, msg)
             if(widget != 0)
             {
               widget = socket.nickname + ": " + widget;
-              io.emit('chat message', widget)
+              io.emit('chat message', widget);
             }
             break;
+          case '!nudge':
+            {
+              io.emit('alert', "nudge");
+            }
         }
       }
 
