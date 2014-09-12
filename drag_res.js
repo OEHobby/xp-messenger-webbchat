@@ -44,6 +44,7 @@ bindResize(".chatMessage", "#window", 0, $("#rightBar").width() + 50);
 bindResize("#chatWindow", "#window", 2, $("#rightBar").width()+10 , ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 10) );
 
 $( "#window" ).draggable({ disabled: true });
+
 var xpbar = document.getElementById('xp-bar');
 xpbar.addEventListener("mousedown", function() {
 	$( "#window" ).draggable( "option", "disabled", false );
@@ -51,7 +52,26 @@ xpbar.addEventListener("mousedown", function() {
 xpbar.addEventListener("mouseup", function() {
 	$( "#window" ).draggable( "option", "disabled", true );
 });
+/*to fix bug that appears if you put the window up so the bar doesnt show. 
+only with mouse up since you should be able to move it down again*/
+var win = document.getElementById('window');
+win.addEventListener("mouseup", function() {
+	$( "#window" ).draggable( "option", "disabled", true );
+});
 
 var pos = $('#window').offset();
 document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - offset ) + "px";
 document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - offset ) + "px";
+
+
+//restore window is something unexpected happens, like godzilla eats it.
+var start = document.getElementById('start-button');
+start.addEventListener("click", function() {
+	$("#window").offset({top:0, left:0});
+	});
+start.addEventListener("mouseover", function() {
+	$("#start-tips").removeClass("hide");
+	});
+start.addEventListener("mouseout", function() {
+	$("#start-tips").addClass("hide");
+	});

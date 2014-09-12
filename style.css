@@ -6,9 +6,14 @@ body
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
+    overflow: hidden;
 }
 
 #window.hide
+{
+	display: none;
+}
+#start-tips.hide
 {
 	display: none;
 }
@@ -517,6 +522,23 @@ body
 
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+}
+
+#start-tips
+{
+	background: rgba(255,255,255,0.6);
+	width: 100px;
+	height: 15px;
+	font-size: 8pt;
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+}
+
+#start-tips p
+{
+	padding: 2px 0 0 8px;
+	margin: 0 0 0 0;
 }
 
 #start-button img
