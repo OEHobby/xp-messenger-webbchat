@@ -18,9 +18,11 @@ socket.on('chat message', function(msg){
 
 socket.on('greeting', function(msg){
 	var nick = msg.split(" ")[2];
+	var message = msg.split(": ")[1];
 	console.log(nick);
 	$('#nickName').html(nick);
 	$('.program-title').html("MSN Messenger - " + nick  + " - (online)");
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' säger:</p>' + '<p class="chatMessage">' + message + '</p>');
 });
 
 socket.on('alert', function(msg){
