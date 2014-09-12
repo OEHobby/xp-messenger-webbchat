@@ -97,8 +97,6 @@
 	top: 5px;
 	width: 85px;
 	height: 85px;
-	background-size: 75px;
-	background-position: center;
 	background-repeat: no-repeat;
 }
 
@@ -109,8 +107,6 @@
 	bottom: 50px;
 	width: 85px;
 	height: 85px;
-	background-size: 75px;
-	background-position: center;
 	background-repeat: no-repeat;
 }
 
@@ -315,6 +311,8 @@
 	height: 44px;
 	width: 700px;
 	border-top: 0;
+	font-family: arial;
+	font-size: 11pt;
 }
 
 .button
@@ -331,7 +329,8 @@
 	width: 680px;
 	margin: 0 0 0 0;
 	font-family: arial;
-	font-size: 12pt;
+	font-size: 11pt;
+	font-weight: bold;
 	color: #000;
 	margin-left: 5px;
 	padding: 0 0 0 0;
@@ -344,9 +343,15 @@
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 	font-family: arial;
-	font-size: 12pt;
+	font-size: 11pt;
 	color: #000;
 	margin-left: 15px;
 	word-break: break-word;
 	white-space: normal;
+}
+
+.profile-picture
+{
+	background: url("img/display_pics.png");
+	background-position: 0 0;
 }

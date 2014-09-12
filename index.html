@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/style.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/chat_win.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/start_menu.css">
-	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/display_pic.css">
 </head>
 <body>
 <div id="wrapper">
@@ -32,11 +31,11 @@
 		</div>
 		<div id="chatWindow"></div>
 		<div id="rightBar">
-			<div id="profilePicture1" class="duck"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+			<div id="profilePicture1" class="profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
 			
 		</div>
 		<div id="bottomBar">
-			<div id="profilePicture2" class="rocket"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+			<div id="profilePicture2" class="profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
 			<div id="smiley-bar">
 				<div id="smiley-symbol" class="smiley-symbol-1"></div>
 				<div id="smiley-symbol" class="smiley-symbol-2"></div>
@@ -68,5 +67,19 @@
 <script src="//oskaremilsson.se/chat/drag_res.js"></script>
 <script src="//oskaremilsson.se/chat/chat_client.js"></script>
 <script src="//oskaremilsson.se/chat/textarea.js"></script>
+
+<script>
+$('#profilePicture1').click(function (){
+	var offset = Math.floor((Math.random() * 23));
+	$('#profilePicture1').css('background-position', '-' + offset*85 +'px 0');
+});
+
+$('#profilePicture2').click(function (){
+	var offset = Math.floor((Math.random() * 23));
+	$('#profilePicture2').css('background-position', '-' + offset*85 +'px 0');
+});
+
+</script>
+
 </body>
 </html>
