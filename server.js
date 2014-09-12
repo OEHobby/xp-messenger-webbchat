@@ -29,17 +29,19 @@ socket.on('chat message', function(msg){
 		var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
    			return '&#'+i.charCodeAt(0)+';';
 		});
-		console.log(socket.nickname);
-  		console.log(msg);
   		console.log("the split: " + msg.split(" ")[0]);
-  		var firstWord = msg.split(" ")[0];
-  		if(isCommand(firstWord))
+  		var firstChar = msg.charAt(0);
+  		if(isCommand(firstChar))
   		{
-  			switch(firstWord)
+        var cmd = msg.split(" ")[0];
+  			switch(cmd)
   			{
   				case '/nick':
   					var newNick = msg.split(" ")[1];
-  					changeNick(socket, newNick);
+            if(newNick != undefined)
+            {
+              changeNick(socket, newNick);
+            }
   					break;
   			}
   		}
@@ -50,7 +52,7 @@ socket.on('chat message', function(msg){
   			{
   				msg = socket.nickname + ": " + msg;
 				io.emit('chat message', msg);
-				console.log('message: ' + msg);
+				console.log(msg);
 			}
 		}
 	});
@@ -58,7 +60,7 @@ socket.on('chat message', function(msg){
 
 function isCommand(string)
 {
-	var cmds = ["/nick", "/msg"];
+	var cmds = ["/", "!"];
 	var bool = false;
 	if( cmds.indexOf(string) != -1 )
 	{
