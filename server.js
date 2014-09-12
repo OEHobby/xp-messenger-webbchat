@@ -54,9 +54,6 @@ function disconnect(io, socket)
 
 function handleMessage(io, socket, msg)
 {
-  var msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-        return '&#'+i.charCodeAt(0)+';';
-    });
       console.log("the split: " + msg.split(" ")[0]);
       var firstChar = msg.charAt(0);
       if(isCommand(firstChar))
@@ -186,8 +183,10 @@ function createLink(msg) //fix problem with the need of space after link. Fix mo
   var link;
   var linkEnd = 0;
   linkStart = msg.indexOf("http://");
+  console.log("linkstart: " + linkStart);
   console.log("found one link");
   linkEnd = msg.indexOf(" ", linkStart);
+  console.log("linkend: " + linkEnd);
   link = msg.slice(linkStart, (linkEnd+1));
   console.log(link);
   msg = msg.replace(link, "<a href='" + link + "' target='_blank'>" + link + "</a>");

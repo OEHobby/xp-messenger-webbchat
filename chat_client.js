@@ -10,8 +10,11 @@ socket.on('chat message', function(msg){
 	console.log(msg);
 	var nick = msg.split(":")[0];
 	console.log("nick: " + nick);
-	var message = msg.split(": ")[1];
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + message + '</p>');
+	msg = msg.split(": ")[1];
+	msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return '&#'+i.charCodeAt(0)+';';
+    });
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
 	autoScroll();
 	console.log($("#chatWindow")[0].scrollHeight);
   });
@@ -25,6 +28,9 @@ socket.on('privmsg', function(msg){
 	console.log("got a priv message from " + nick);
 	var nick = msg.split(":")[0];
 	msg = msg.split(": ")[1];
+	msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return '&#'+i.charCodeAt(0)+';';
+    });
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said in private:</p>' + '<p class="chatMessage">' + msg + '.</p>');
 	autoScroll()
 });
