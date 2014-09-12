@@ -4,7 +4,7 @@ var io = require('socket.io')(http);
 var chatters = 0;
 
 app.get('/', function(req, res){
-  res.sendFile('/var/www/chat/test.html');
+  res.sendFile('/var/www/chat/index.html');
 });
 
 http.listen(3000, function(){
@@ -12,10 +12,12 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
+    var address = socket.handshake.address;
+
   	socket.nickname = "MSNLover" + chatters;
   	chatters++;
-   	console.log('user: ' + socket.id + " connected and is called " + socket.nickname);
-   	socket.emit('chat message', 'GlaDos: Howdy, you change your nick with /nick nick');
+   	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + address.address);
+   	socket.emit('greeting', 'GlaDos: Howdy, ' + socket.nickname + ' . Welcome to this nostalgia trip! You change your nick with /nick nick');
 
   	socket.on('disconnect', function(){
     console.log('user disconnected');
@@ -74,6 +76,7 @@ function changeNick(socket, nick)
 			if(!nickTaken(nick) && nick.length > 2 && nick.length < 20)
 			{
         		clients[i].nickname = nick;
+            clients[i].emit('alert', 'nick:' + nick);
         		console.log(clients[i].id + "is now: " + clients[i].nickname);
         	}
         	else

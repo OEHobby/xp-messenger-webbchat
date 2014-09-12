@@ -265,7 +265,7 @@ body
 
 .head-symbol-3
 {
-	background: url("img/img/head_symbols.png");
+	background: url("img/head_symbols.png");
 	background-position: -46px 0;
 	left: 84px;
 	width: 24px;
@@ -428,8 +428,9 @@ body
 	border-top: 0;
 }
 
-#text-field form input[type=text]
+#m
 {
+	resize:none;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 	border: 0;
@@ -542,7 +543,7 @@ body
 	left: 15px;
 	font-family: arial;
 	color: #FFFFFF;
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 .program-title
@@ -554,12 +555,12 @@ body
 	left: 5px;
 	font-family: arial;
 	color: #FFFFFF;
-	font-size: 12pt;
+	font-size: 10pt;
 }
 
 .chatTitle
 {
-	width: 685px;
+	width: 680px;
 	margin: 0 0 0 0;
 	font-family: arial;
 	font-size: 12pt;
@@ -578,6 +579,6 @@ body
 	font-size: 12pt;
 	color: #000;
 	margin-left: 15px;
-	word-break: break-all;
+	word-break: break-word;
 	white-space: normal;
 }

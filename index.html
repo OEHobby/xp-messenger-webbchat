@@ -1,39 +1,68 @@
-<!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/style.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div id="wrapper">
+	<div id="window" class="ui-widget-content">
+		<div id="xp-bar">
+			<p class="program-title">MSN Messenger (offline)</p>
+			<div id="minimize-button" class="blue-xp-button"><p class="xp-button-text">_</p></div>
+			<div id="maximize-button" class="blue-xp-button"><p class="xp-button-text">[]</p></div>
+			<div id="close-button" class="red-xp-button"><p class="xp-button-text">X</p></div>
+		</div>
+		<div id="head">
+			<div id="nickWrapper">
+				<div id="msn-head"></div>
+				<p class="nickName" id="nickName">Kittyface</p>
+				<p class="nickStatus">Filurar på något mystiskt.</p>
+			</div>
+			<div id="head-symbol" class="head-symbol-1"></div>
+			<div id="head-symbol" class="head-symbol-2"></div>
+			<div id="head-symbol" class="head-symbol-3"></div>
+			<div id="head-symbol" class="head-symbol-4"></div>
+			<div id="head-symbol" class="head-symbol-5"></div>
+			<div id="head-symbol" class="head-symbol-6"></div>
+			<div id="head-symbol" class="head-symbol-7"></div>
+		</div>
+		<div id="chatWindow"></div>
+		<div id="rightBar">
+			<div id="profilePicture1" class="duck"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+			
+		</div>
+		<div id="bottomBar">
+			<div id="profilePicture2" class="rocket"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+			<div id="smiley-bar">
+				<div id="smiley-symbol" class="smiley-symbol-1"></div>
+				<div id="smiley-symbol" class="smiley-symbol-2"></div>
+				<div id="smiley-symbol-vibb" class="smiley-symbol-3"></div>
+				<div id="smiley-symbol" class="smiley-symbol-4"></div>
+				<div id="smiley-symbol" class="smiley-symbol-5"></div>
+				<div id="smiley-symbol" class="smiley-symbol-6"></div>
+			</div>
+			<div id="text-field">
+				<form action="">
+					<textarea type="text" id="m" autocomplete="off"></textarea>
+			</div>
+			<button class="button">Send</button></form>
+		</div>
+	</div>
+</div>
+<div id="start-menu">
+	<div id="start-button"><img src="//oskaremilsson.se/chat/img/start.png"></div>
+	<div id="ie-short-small"></div>
+	<div id="messenger-mini"><p class="start-menu-link">MSN Messenger</p></div>
+</div>
 
-
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-  var socket = io();
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
-    return false;
-  });
-
-socket.on('chat message', function(msg){
-    $('#messages').append($('<li>').text(msg));
-  });
-</script>
-
+<script src="//oskaremilsson.se/chat/nudge.js"></script>
+<script src="//oskaremilsson.se/chat/mini_maxi.js"></script>
+<script src="//oskaremilsson.se/chat/drag_res.js"></script>
+<script src="//oskaremilsson.se/chat/chat_client.js"></script>
+<script src="//oskaremilsson.se/chat/textarea.js"></script>
 </body>
 </html>
