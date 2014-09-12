@@ -33,6 +33,7 @@ function bindResize(id, parent, dir, offset1, offset2) //dir(0 = w, 1 = h, 2 = b
 }
 
 $( "#window" ).resizable();
+
 bindResize("#head", "#window", 0);
 bindResize("#bottomBar", "#window", 0);
 bindResize("#xp-bar", "#window", 0);
@@ -42,6 +43,8 @@ bindResize("#m", "#window", 0, $("#rightBar").width());
 bindResize("#smiley-bar", "#window", 0, $("#rightBar").width());
 bindResize(".chatMessage", "#window", 0, $("#rightBar").width() + 50);
 bindResize("#chatWindow", "#window", 2, $("#rightBar").width()+10 , ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 10) );
+
+$( "#window" ).resize(autoScroll);
 
 $( "#window" ).draggable({ disabled: true });
 
