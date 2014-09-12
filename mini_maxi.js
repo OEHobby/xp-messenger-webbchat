@@ -27,8 +27,8 @@ maxi.addEventListener("click", function(){maximize(offset);});
 function maximize(offset)
 {
 	//maximize window
-	$("#window").width($(window).width() - offset);
-	$("#window").height($(window).height() - offset);
+	$("#window").width($(window).innerWidth() - offset);
+	$("#window").height($(window).innerHeight() - offset);
 	$("#window").offset({top:0, left:0});
 	//maximize head, xp-bar, bottom, textfield, smiley-bar
 	$("#head").width($(window).width() - offset);
@@ -39,8 +39,8 @@ function maximize(offset)
 	$("#text-field").width( $(window).width() - $("#rightBar").width()  - offset);
 	$("#text-field input[type=text]").width( $(window).width() - $("#rightBar").width()  - offset) ;
 	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - offset);
-	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - offset);
-	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height())  - offset);
+	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - (offset + 10));
+	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 17) );
 	$("#right-bar").height($(window).height() - offset);
 
 }
