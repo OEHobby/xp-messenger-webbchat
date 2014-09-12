@@ -12,16 +12,18 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
-  	socket.nickname = "MSNLover" + chatters;
   	chatters++;
+    socket.nickname = "MSNLover" + chatters;
    	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
    	socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
-    socket.emit('alert', 'chatters:' + chatters);
+    io.emit('alert', 'chatters:' + chatters);
+    console.log(chatters);
     socket.emit('alert', 'nick:' + socket.nickname);
+    io.emit('greeting', socket.nickname + " has joined the chat.");
 
   	socket.on('disconnect', function(){
       chatters--;
-      socket.emit('alert', 'chatters:' + chatters);
+      io.emit('alert', 'chatters:' + chatters);
       console.log(socket.nickname + ' disconnected');
     });
 

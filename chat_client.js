@@ -12,12 +12,13 @@ socket.on('chat message', function(msg){
 	console.log("nick: " + nick);
 	var message = msg.split(": ")[1];
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + message + '</p>');
-	$("#chatWindow").scrollTop($("#chatWindow")[0].scrollHeight);
+	autoScroll();
 	console.log($("#chatWindow")[0].scrollHeight);
   });
 
 socket.on('greeting', function(msg){
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">GlaDos said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
+	autoScroll()
 });
 
 socket.on('alert', function(msg){
@@ -34,3 +35,8 @@ socket.on('alert', function(msg){
 			break;
 	}
 });
+
+function autoScroll()
+{
+	$("#chatWindow").scrollTop($("#chatWindow")[0].scrollHeight);
+}
