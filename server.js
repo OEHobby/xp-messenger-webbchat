@@ -26,10 +26,14 @@ io.on('connection', function(socket){
 
 function init(io, socket)
 {
-  chatters++;
-  if(!nickTaken("MSNLover" + chatters))
+  ++chatters;
+  if(nickTaken("MSNLover" + chatters))
   {
     socket.nickname = "MSNLover" + Math.floor((Math.random() * 100)) + chatters;
+  }
+  else
+  {
+    socket.nickname = "MSNLover" + chatters;
   }
   
   console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
@@ -42,7 +46,7 @@ function init(io, socket)
 
 function disconnect(io, socket)
 {
-  chatters--;
+  --chatters;
   io.emit('alert', 'chatters:' + chatters);
   io.emit('greeting', socket.nickname + " has left the chat.");
   console.log(socket.nickname + ' disconnected');
