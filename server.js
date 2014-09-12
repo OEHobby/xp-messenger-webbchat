@@ -15,7 +15,7 @@ io.on('connection', function(socket){
   	socket.nickname = "MSNLover" + chatters;
   	chatters++;
    	console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
-   	socket.emit('greeting', 'GlaDos: Howdy, ' + socket.nickname + '. Welcome to this nostalgia trip! You change your nick with /nick nick');
+   	socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick');
     socket.emit('alert', 'chatters:' + chatters);
     socket.emit('alert', 'nick:' + socket.nickname);
 

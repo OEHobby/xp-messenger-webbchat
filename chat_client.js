@@ -17,10 +17,7 @@ socket.on('chat message', function(msg){
   });
 
 socket.on('greeting', function(msg){
-	var nick = msg.split(" ")[0];
-	var message = msg.split(": ")[1];
-	console.log(nick);
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + message + '</p>');
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">GlaDos said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
 });
 
 socket.on('alert', function(msg){
