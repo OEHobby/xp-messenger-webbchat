@@ -44,7 +44,7 @@ socket.on('chat message', function(msg){
             }
   					break;
           case '!help':
-            msg = 'Change nick with /nick nick, you can resize, move and mini/maximize window and nudge. Press Start to reset window position. Press a display picture to change to random new one. Git: <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">xp-messenger-webbchat</a>';
+            msg = 'Change nick with /nick nick, you can resize, move (click and drag on the blue bar) and mini/maximize window and nudge. Press Start to reset window position. Press a display picture to change to random new one. Git: <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">xp-messenger-webbchat</a>';
             socket.emit('greeting', msg);
   			}
   		}
