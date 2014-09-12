@@ -30,7 +30,7 @@ socket.on('alert', function(msg){
 			$('.program-title').html("MSN Messenger - " + info + " - (online)")
 			break;
 		case 'chatters':
-			$('.nickStatus').html("It is: " + info + " online right now.");
+			$('.nickStatus').html("It's " + info + " online right now.");
 			break;
 	}
 });
