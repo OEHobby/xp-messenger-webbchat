@@ -1,4 +1,4 @@
-
+var myNickname = "";
 var socket = io();
 $('form').submit(function(){
 	socket.emit('chat message', $('#m').val());
@@ -19,6 +19,10 @@ socket.on('chat message', function(msg){
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
 	autoScroll();
 	console.log($("#chatWindow")[0].scrollHeight);
+	if(myNickname != nick)
+	{
+		playSound("message");
+	}
   });
 
 socket.on('greeting', function(msg){
@@ -43,6 +47,7 @@ socket.on('alert', function(msg){
 	switch(alert)
 	{
 		case 'nick':
+			myNickname = info;
 			$('.nickName').html(info);
 			$('.program-title').html("MSN Messenger - " + info + " - (online)")
 			break;
@@ -51,6 +56,10 @@ socket.on('alert', function(msg){
 			break;
 		case 'nudge':
 			nudge(10);
+			playSound('nudge');
+			break;
+		case 'newChatter':
+			playSound('login');
 			break;
 	}
 });

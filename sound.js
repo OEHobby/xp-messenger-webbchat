@@ -1,24 +1,50 @@
 var sound = true;
-$('.clock-symbol-1').click(function(){
-	sound = false;
-	$(this).addClass('clock-symbol-1-mute');
-	$(this).removeClass('clock-symbol-1');
+$('#sound-button').click(function(){
+	var classList = $('#sound-button').attr('class').split(/\s+/);
+	$.each( classList, function(index, item)
+	{
+    	if (item === 'clock-symbol-1-mute') 
+    	{
+    		$("#sound-button").addClass("clock-symbol-1");
+       		$("#sound-button").removeClass("clock-symbol-1-mute");
+       		sound = true;
+       		console.log("unmute");
+    	}
+    	else if(item === 'clock-symbol-1')
+    	{
+    		$("#sound-button").addClass("clock-symbol-1-mute");
+    		$("#sound-button").removeClass("clock-symbol-1");
+    		sound = false;
+    		console.log("mute");
+    	}
+    });
 });
 
-$('.clock-symbol-1-mute').click(function(){
-	sound = true;
-	$(this).removeClass('clock-symbol-1-mute');
-	$(this).addClass('clock-symbol-1');
-});
 
-var messageAudio = new Audio('audio/message.mp3');
+
 
 function playSound(type)
 {
-	switch(type)
+	if(sound)
 	{
-		case 'message':
-			messageAudio.play();
-			break;
+		switch(type)
+		{
+			case 'message':
+				var audio = new Audio('//oskaremilsson.se/chat/audio/message.mp3');
+				audio.play();
+				break;
+			case 'nudge':
+				var audio = new Audio('//oskaremilsson.se/chat/audio/nudge.mp3');
+				audio.play();
+				break;
+			case 'login':
+				var audio = new Audio('//oskaremilsson.se/chat/audio/login.mp3');
+				audio.play();
+				break;
+			case 'startup':
+				var audio = new Audio('//oskaremilsson.se/chat/audio/startup.mp3');
+				audio.play();
+				break;
+		}
 	}
 }
