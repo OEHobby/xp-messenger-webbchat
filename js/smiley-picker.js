@@ -18,11 +18,11 @@ $("#smiley-picker").click(function(e){
    var parentOffset = $(this).offset();
    //or $(this).offset(); if you really just want the current element's offset
    var x = e.pageX - parentOffset.left;
-   var y = e.pageY - (parentOffset.top+15);
+   var y = e.pageY - (parentOffset.top+20);
 
    console.log(x + ", " + y);
    x = Math.floor(x/30);
-   y = Math.floor(y/50);
+   y = Math.floor(y/45);
    console.log(x + "," + y);
    var smiley = [[":)", ":D", ";)", ":O", ":P","(H)", ":@", ":S", ":$", ":("], [":'(", ":|", "(A)", "8o|", "8-|","+o(", "<:o)", "|-)", "*-)", ":-#"], [":-*", "^o)", "8-)", "(L)", "(U)","(M)", "(@)", "(&)", "(sn)", "(bah)"], ["(S)", "(*)", "(#)", "(R)", "({)","(})", "(K)", "(F)", "(W)", "(O)"]];
    console.log(smiley[y][x]);
