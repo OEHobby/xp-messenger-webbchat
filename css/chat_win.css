@@ -119,7 +119,7 @@
 	left: 8px;
 	width: 16px;
 	height: 16px;
-	background: url("img/msn_head.png");
+	background: url("../img/msn_head.png");
 }
 
 .head-symbol
@@ -127,7 +127,7 @@
 	position: absolute;
 	top: 35px;
 	height: 30px;
-	background: url("img/head_symbols.png");
+	background: url("../img/head_symbols.png");
 }
 
 .head-symbol-1
@@ -202,7 +202,7 @@
 	position: absolute;
 	top: 8px;
 	height: 16px;
-	background: url("img/smiley_symbols.png");
+	background: url("../img/smiley_symbols.png");
 }
 
 .smiley-symbol-1
@@ -345,7 +345,7 @@
 
 .profile-picture
 {
-	background: url("img/display_pics.png");
+	background: url("../img/display_pics.png");
 	background-position: 0 0;
 }
 
@@ -358,7 +358,7 @@
 	left: 10px;
 	bottom: 100px;
 	z-index: 99;
-	background: url("img/smileys.jpg");
+	background: url("../img/smileys.jpg");
 	border: 1px solid #ccc;
 	cursor: pointer;
 }

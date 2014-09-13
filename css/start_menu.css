@@ -86,7 +86,7 @@
 
 #ie-short-small
 {
-	background: url("img/ie.png");
+	background: url("../img/ie.png");
 	width: 16px;
 	height: 19px;
 	position: absolute;
@@ -142,7 +142,7 @@
 {
 	height: 17px;
 	width: 15px;
-	background: url("img/clock_symbols.png");
+	background: url("../img/clock_symbols.png");
 	position: absolute;
 	bottom: 5px;
 }
