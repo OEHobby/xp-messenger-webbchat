@@ -151,6 +151,7 @@
 {
 	background-position: -58px 0;
 	right: 60px;
+	cursor: pointer;
 }
 
 .clock-symbol-1-mute
@@ -158,6 +159,7 @@
 	background-position: -73px 0;
 	right: 56px;
 	width: 19px;
+	cursor: pointer;
 }
 
 .clock-symbol-2
