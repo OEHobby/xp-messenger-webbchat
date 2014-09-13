@@ -71,7 +71,8 @@ function handleMessage(io, socket, msg)
             }
             break;
           case '!help':
-            msg = 'Change nick with /nick nick, you can resize, move (click and drag on the blue bar) and mini/maximize window and nudge. ';
+            msg = 'Change nick with /nick nick eg. /nick oskar. Features: resize, move and mini/maximize/restore the chat-window. ';
+            mag += 'Send nudges to everyone, mute the sound (down at the clock). Choose smileys from the menu. Send spotify-widgets with !send <link>.'
             msg += 'Press Start to reset window position. Press a display picture to change to random new one. <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">Project on Git</a>';
             socket.emit('greeting', msg);
             break;
