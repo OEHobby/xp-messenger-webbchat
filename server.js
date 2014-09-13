@@ -27,7 +27,7 @@ io.on('connection', function(socket){
 
 function init(io, socket)
 {
-  ++chatters;
+  chatters += 1;
   if(nickTaken("MSNLover" + chatters))
   {
     socket.nickname = "MSNLover" + Math.floor((Math.random() * 100)) + chatters;
@@ -47,7 +47,7 @@ function init(io, socket)
 
 function disconnect(io, socket)
 {
-  --chatters;
+  chatters += 1;
   io.emit('alert', 'chatters:' + chatters);
   io.emit('greeting', socket.nickname + " has left the chat.");
   console.log(socket.nickname + ' disconnected');
