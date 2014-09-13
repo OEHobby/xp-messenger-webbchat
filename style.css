@@ -31,13 +31,12 @@ body
 	border-top: 1px solid #1356c1;
 }
 
-
-
 #minimize-button
 {
 	position: absolute;
 	right: 50px;
 	top: 6px;
+	cursor: pointer; 
 }
 
 #maximize-button
@@ -45,6 +44,7 @@ body
 	position: absolute;
 	right: 26px;
 	top: 6px;
+	cursor: pointer; 
 }
 
 #close-button
