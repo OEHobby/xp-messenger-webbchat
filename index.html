@@ -104,6 +104,9 @@ $(window).load(newDisplayPicture('#profilePicture2'));
 
 playSound('startup');
 
+var time = new Date();
+$(".clock-time").html(time.toTimeString().slice(0, 5));
+
 </script>
 </body>
 </html>
