@@ -24,11 +24,14 @@ $("#smiley-picker").click(function(e){
    x = Math.floor(x/30);
    y = Math.floor(y/45);
    console.log(x + "," + y);
+
+   /* Create the array that holds the smiley-codes */
    var smiley = [[":)", ":D", ";)", ":O", ":P","(H)", ":@", ":S", ":$", ":("], 
                 [":'(", ":|", "(A)", "8o|", "8-|","+o(", "<:o)", "|-)", "*-)", ":-#"], 
                 [":-*", "^o)", "8-)", "(L)", "(U)","(M)", "(@)", "(&)", "(sn)", "(bah)"], 
                 ["(S)", "(*)", "(#)", "(R)", "({)","(})", "(K)", "(F)", "(W)", "(O)"]];
    console.log(smiley[y][x]);
+   /* add the clicked code to textarea */
    $("#m").val($("#m").val() + smiley[y][x]);
 });
 
