@@ -14,13 +14,14 @@ socket.on('chat message', function(msg){
 	msg = msg.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
         return '&#'+i.charCodeAt(0)+';';
     });
+    msg = createSmileys(msg);
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
 	autoScroll();
 	console.log($("#chatWindow")[0].scrollHeight);
   });
 
 socket.on('greeting', function(msg){
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">GlaDos said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
+	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
 	autoScroll()
 });
 

@@ -1,0 +1,256 @@
+.smiley
+{
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	border: none;
+	background: url("img/smileys.png");
+}
+
+/* LINE ONE */
+
+.smiley-1
+{
+
+	background-position: 0 0;
+}
+
+.smiley-2
+{
+
+	background-position: -18px 0;
+}
+
+.smiley-3
+{
+
+	background-position: -36px 0;
+}
+
+.smiley-4
+{
+
+	background-position: -54px 0;
+}
+
+.smiley-5
+{
+
+	background-position: -72px 0;
+}
+
+.smiley-6
+{
+
+	background-position: -90px 0;
+}
+
+.smiley-7
+{
+
+	background-position: -108px 0;
+}
+
+.smiley-8
+{
+
+	background-position: -126px 0;
+}
+
+.smiley-9
+{
+
+	background-position: -144px 0;
+}
+
+.smiley-10
+{
+
+	background-position: -162px 0;
+}
+
+/*LINE TWO */
+
+.smiley-11
+{
+
+	background-position: 0 -18px;
+}
+
+.smiley-12
+{
+
+	background-position: -18px -18px;
+}
+
+.smiley-13
+{
+
+	background-position: -36px -18px;
+}
+
+.smiley-14
+{
+
+	background-position: -54px -18px;
+}
+
+.smiley-15
+{
+
+	background-position: -72px -18px;
+}
+
+.smiley-16
+{
+
+	background-position: -90px -18px;
+}
+
+.smiley-17
+{
+
+	background-position: -108px -18px;
+}
+
+.smiley-18
+{
+
+	background-position: -126px -18px;
+}
+
+.smiley-19
+{
+
+	background-position: -144px -18px;
+}
+
+.smiley-20
+{
+
+	background-position: -162px -18px;
+}
+
+/*LINE THREE */
+
+.smiley-21
+{
+
+	background-position: 0 -36px;
+}
+
+.smiley-22
+{
+
+	background-position: -18px -36px;
+}
+
+.smiley-23
+{
+
+	background-position: -36px -36px;
+}
+
+.smiley-24
+{
+
+	background-position: -54px -36px;
+}
+
+.smiley-25
+{
+
+	background-position: -72px -36px;
+}
+
+.smiley-26
+{
+
+	background-position: -90px -36px;
+}
+
+.smiley-27
+{
+
+	background-position: -108px -36px;
+}
+
+.smiley-28
+{
+
+	background-position: -126px -36px;
+}
+
+.smiley-29
+{
+
+	background-position: -144px -36px;
+}
+
+.smiley-30
+{
+
+	background-position: -162px -36px;
+}
+
+/*LINE FOUR */
+
+.smiley-31
+{
+
+	background-position: 0 -54px;
+}
+
+.smiley-32
+{
+
+	background-position: -18px -54px;
+}
+
+.smiley-33
+{
+
+	background-position: -36px -54px;
+}
+
+.smiley-34
+{
+
+	background-position: -54px -54px;
+}
+
+.smiley-35
+{
+
+	background-position: -72px -54px;
+}
+
+.smiley-36
+{
+
+	background-position: -90px -54px;
+}
+
+.smiley-37
+{
+
+	background-position: -108px -54px;
+}
+
+.smiley-38
+{
+
+	background-position: -126px -54px;
+}
+
+.smiley-39
+{
+
+	background-position: -144px -54px;
+}
+
+.smiley-40
+{
+
+	background-position: -162px -54px;
+}
