@@ -210,6 +210,7 @@
 	background-position: 0 0;
 	left: 10px;
 	width: 25px;
+	cursor: pointer;
 }
 
 .smiley-symbol-2
@@ -357,7 +358,11 @@
 	left: 10px;
 	bottom: 100px;
 	z-index: 99;
-	display: none;
 	background: url("img/smileys.jpg");
 	border: 1px solid #ccc;
+}
+
+.hide 
+{
+	display: none;
 }
