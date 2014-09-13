@@ -5,7 +5,7 @@ var chatters = 0;
 var lastNudge = 0;
 
 app.get('/', function(req, res){
-  res.sendFile('/var/www/chat/index.html');
+    res.sendFile('/var/www/chat/index.html');
 });
 
 http.listen(3000, function(){
@@ -66,7 +66,7 @@ function handleMessage(io, socket, msg)
             var newNick = msg.split(" ")[1];
             if(newNick != undefined)
             {
-              changeNick(socket, newNick);
+              changeNick(io, socket, newNick);
             }
             break;
           case '!help':
@@ -121,16 +121,19 @@ function isCommand(string)
 	return bool;
 }
 
-function changeNick(socket, nick)
+function changeNick(io, socket, nick)
 {
+  var found = false;
 	var clients = findClientsSocket();
-	for (var i in clients) 
+	for (var i = 0; i < clients.length && !found; i++) 
 	{
 		console.log("searching for: " + socket.id + " found: " + clients[i].id);
 		if(clients[i].id == socket.id)
 		{
+      found = true;
 			if(!nickTaken(nick) && nick.length > 2 && nick.length < 20)
 			{
+            io.emit('greeting', clients[i].nickname + " is now known as: " + nick);
         		clients[i].nickname = nick;
             clients[i].emit('alert', 'nick:' + nick);
         		console.log(clients[i].id + "is now: " + clients[i].nickname);
