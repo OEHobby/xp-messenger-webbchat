@@ -106,3 +106,81 @@
 	font-size: 10pt;
 	cursor: pointer; 
 }
+
+#clock-holder
+{
+	width: 165px;
+	height: 30px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	display: inline-block;
+	background: #219cff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #219cff 0%, #1db9f6 1%, #1b97df 2%, #1c8afb 28%, #0c94f7 51%, #0ca1f3 72%, #0d9ef1 97%, #0261bd 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#219cff), color-stop(1%,#1db9f6), color-stop(2%,#1b97df), color-stop(28%,#1c8afb), color-stop(51%,#0c94f7), color-stop(72%,#0ca1f3), color-stop(97%,#0d9ef1), color-stop(100%,#0261bd)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #219cff 0%,#1db9f6 1%,#1b97df 2%,#1c8afb 28%,#0c94f7 51%,#0ca1f3 72%,#0d9ef1 97%,#0261bd 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #219cff 0%,#1db9f6 1%,#1b97df 2%,#1c8afb 28%,#0c94f7 51%,#0ca1f3 72%,#0d9ef1 97%,#0261bd 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #219cff 0%,#1db9f6 1%,#1b97df 2%,#1c8afb 28%,#0c94f7 51%,#0ca1f3 72%,#0d9ef1 97%,#0261bd 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #219cff 0%,#1db9f6 1%,#1b97df 2%,#1c8afb 28%,#0c94f7 51%,#0ca1f3 72%,#0d9ef1 97%,#0261bd 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#219cff', endColorstr='#0261bd',GradientType=0 ); /* IE6-9 */
+	border-left: 1px solid #002f8c;
+}
+
+.clock-time
+{
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	color: #FFFFFF;
+	position: absolute;
+	right: 15px;
+	bottom: 6px;
+	font-family: arial;
+	font-size: 10pt;
+}
+
+.clock-symbol
+{
+	height: 17px;
+	width: 15px;
+	background: url("img/clock_symbols.png");
+	position: absolute;
+	bottom: 5px;
+}
+
+.clock-symbol-1
+{
+	background-position: -58px 0;
+	right: 60px;
+}
+
+.clock-symbol-1-mute
+{
+	background-position: -73px 0;
+	right: 56px;
+	width: 19px;
+}
+
+.clock-symbol-2
+{
+	background-position: -42px 0;
+	right: 80px;
+}
+
+.clock-symbol-3
+{
+	background-position: -29px 0;
+	right: 102px;
+	width: 13px;
+}
+
+.clock-symbol-4
+{
+	background-position: -15px 0;
+	right: 120px;
+}
+
+.clock-symbol-5
+{
+	background-position: 0px 0;
+	right: 140px;
+}
