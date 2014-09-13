@@ -13,7 +13,7 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
-    init(io, socket);
+  init(io, socket);
 
   socket.on('chat message', function(msg){ 
   		handleMessage(io, socket, msg);
@@ -47,7 +47,7 @@ function init(io, socket)
 
 function disconnect(io, socket)
 {
-  chatters += 1;
+  chatters -= 1;
   io.emit('alert', 'chatters:' + chatters);
   io.emit('greeting', socket.nickname + " has left the chat.");
   console.log(socket.nickname + ' disconnected');

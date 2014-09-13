@@ -202,56 +202,53 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-#smiley-symbol, #smiley-symbol-vibb
+#smiley-symbol
 {
 	position: absolute;
 	top: 8px;
 	height: 16px;
+	background: url("img/smiley_symbols.png");
 }
 
-.smiley-symbol-1
+#smiley-symbol.smiley-symbol-1
 {
-	background: url("img/smiley_symbols.png");
 	background-position: 0 0;
 	left: 10px;
 	width: 25px;
 }
 
-.smiley-symbol-2
+#smiley-symbol.smiley-symbol-2
 {
-	background: url("img/smiley_symbols.png");
+
 	background-position: -25px 0;
 	left: 40px;
 	width: 26px;
 }
 
-.smiley-symbol-3
+#smiley-symbol.smiley-symbol-3
 {
-	background: url("img/smiley_symbols.png");
 	background-position: -51px 0;
 	left: 71px;
 	width: 24px;
+	cursor: pointer; 
 }
 
-.smiley-symbol-4
+#smiley-symbol.smiley-symbol-4
 {
-	background: url("img/smiley_symbols.png");
 	background-position: -75px 0;
 	left: 100px;
 	width: 16px;
 }
 
-.smiley-symbol-5
+#smiley-symbol.smiley-symbol-5
 {
-	background: url("img/smiley_symbols.png");
 	background-position: -93px 0;
 	left: 121px;
 	width: 16px;
 }
 
-.smiley-symbol-6
+#smiley-symbol.smiley-symbol-6
 {
-	background: url("img/smiley_symbols.png");
 	background-position: -109px 0;
 	left: 142px;
 	width: 25px;

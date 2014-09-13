@@ -44,9 +44,7 @@ function nudge(jump)
 	setTimeout(function(){moveWindow(jump, "down");}, 55);
 }
 
-var vibber = document.getElementById('smiley-symbol-vibb');
-vibber.addEventListener("click", function() {
-		//nudge(10);nudge(10);nudge(10);
-		$("#m").val('!nudge');
-		$("form").submit();
+$('.smiley-symbol-3').click(function(){
+	$("#m").val('!nudge');
+	$("form").submit();
 });
