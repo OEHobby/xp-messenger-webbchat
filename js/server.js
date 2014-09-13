@@ -43,7 +43,7 @@ function init(io, socket)
   console.log(chatters);
   socket.emit('alert', 'nick:' + socket.nickname);
   io.emit('greeting', socket.nickname + " has joined the chat.");
-  io.emit('alert', 'newChatter:playsound');
+  io.emit('alert', 'newChatter:' + socket.nickname);
 }
 
 function disconnect(io, socket)

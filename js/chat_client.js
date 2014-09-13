@@ -59,7 +59,10 @@ socket.on('alert', function(msg){
 			playSound('nudge');
 			break;
 		case 'newChatter':
-			playSound('login');
+			if(myNickname != info)
+			{
+				playSound('login');
+			}
 			break;
 	}
 });
