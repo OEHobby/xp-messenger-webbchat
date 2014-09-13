@@ -1,6 +1,6 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
+  "name": "xp-msn-chat",
+  "version": "0.1.1",
+  "description": "chat that looks like xp and msn",
   "dependencies": {}
 }
