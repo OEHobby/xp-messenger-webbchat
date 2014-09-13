@@ -80,7 +80,6 @@ body
 	background: -ms-linear-gradient(-45deg,  #adbfff 0%,#8aa9fc 11%,#6b96f9 22%,#538fef 58%,#5586e8 98%,#88a8e8 100%); /* IE10+ */
 	background: linear-gradient(135deg,  #adbfff 0%,#8aa9fc 11%,#6b96f9 22%,#538fef 58%,#5586e8 98%,#88a8e8 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adbfff', endColorstr='#88a8e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
 }
 
 .xp-button-text
