@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var chatters = 0;
+var lastNudge = 0;
 
 app.get('/', function(req, res){
   res.sendFile('/var/www/chat/index.html');
@@ -82,7 +83,12 @@ function handleMessage(io, socket, msg)
             }
             break;
           case '!nudge':
-            io.emit('alert', "nudge");
+            console.log("lastNudge: " + lastNudge);
+            if((new Date().getTime() - lastNudge) > 1000)
+            {
+              io.emit('alert', "nudge");
+              lastNudge = new Date().getTime(); 
+            }
             break;
           case '/msg':
             privMsg(socket, msg);
