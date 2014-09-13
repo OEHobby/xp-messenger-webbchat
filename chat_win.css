@@ -122,10 +122,16 @@
 	background: url("img/msn_head.png");
 }
 
+.head-symbol
+{
+	position: absolute;
+	top: 35px;
+	height: 30px;
+	background: url("img/head_symbols.png");
+}
 
 .head-symbol-1
 {
-	background: url("img/head_symbols.png");
 	background-position: 0 0;
 	left: 8px;
 	width: 24px;
@@ -133,7 +139,6 @@
 
 .head-symbol-2
 {
-	background: url("img/head_symbols.png");
 	background-position: -24px 0;
 	left: 47px;
 	width: 22px;
@@ -141,7 +146,6 @@
 
 .head-symbol-3
 {
-	background: url("img/head_symbols.png");
 	background-position: -46px 0;
 	left: 84px;
 	width: 24px;
@@ -149,7 +153,6 @@
 
 .head-symbol-4
 {
-	background: url("img/head_symbols.png");
 	background-position: -70px 0;
 	left: 123px;
 	width: 23px;
@@ -157,7 +160,6 @@
 
 .head-symbol-5
 {
-	background: url("img/head_symbols.png");
 	background-position: -93px 0;
 	left: 161px;
 	width: 23px;
@@ -165,7 +167,6 @@
 
 .head-symbol-6
 {
-	background: url("img/head_symbols.png");
 	background-position: -116px 0;
 	left: 199px;
 	width: 17px;
@@ -173,17 +174,9 @@
 
 .head-symbol-7
 {
-	background: url("img/head_symbols.png");
 	background-position: -133px 0;
 	left: 231px;
 	width: 22px;
-}
-
-#head-symbol
-{
-	position: absolute;
-	top: 35px;
-	height: 30px;
 }
 
 #smiley-bar
@@ -204,7 +197,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-#smiley-symbol
+.smiley-symbol
 {
 	position: absolute;
 	top: 8px;
@@ -212,14 +205,14 @@
 	background: url("img/smiley_symbols.png");
 }
 
-#smiley-symbol.smiley-symbol-1
+.smiley-symbol-1
 {
 	background-position: 0 0;
 	left: 10px;
 	width: 25px;
 }
 
-#smiley-symbol.smiley-symbol-2
+.smiley-symbol-2
 {
 
 	background-position: -25px 0;
@@ -227,7 +220,7 @@
 	width: 26px;
 }
 
-#smiley-symbol.smiley-symbol-3
+.smiley-symbol-3
 {
 	background-position: -51px 0;
 	left: 71px;
@@ -235,21 +228,21 @@
 	cursor: pointer; 
 }
 
-#smiley-symbol.smiley-symbol-4
+.smiley-symbol-4
 {
 	background-position: -75px 0;
 	left: 100px;
 	width: 16px;
 }
 
-#smiley-symbol.smiley-symbol-5
+.smiley-symbol-5
 {
 	background-position: -93px 0;
 	left: 121px;
 	width: 16px;
 }
 
-#smiley-symbol.smiley-symbol-6
+.smiley-symbol-6
 {
 	background-position: -109px 0;
 	left: 142px;
@@ -353,4 +346,18 @@
 {
 	background: url("img/display_pics.png");
 	background-position: 0 0;
+}
+
+#smiley-picker
+{
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	background: #000;
+	left: 10px;
+	bottom: 100px;
+	z-index: 99;
+	display: none;
+	background: url("img/smileys.jpg");
+	border: 1px solid #ccc;
 }
