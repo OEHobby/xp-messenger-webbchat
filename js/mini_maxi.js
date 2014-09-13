@@ -37,7 +37,7 @@ function maximize(offset)
 	$("#nickwrapper").width($(window).width() - offset);
 
 	$("#text-field").width( $(window).width() - $("#rightBar").width()  - offset);
-	$("#text-field input[type=text]").width( $(window).width() - $("#rightBar").width()  - offset) ;
+	$("#m").width( $(window).width() - $("#rightBar").width()  - offset) ;
 	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - offset);
 	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - (offset + 10));
 	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 17) );
