@@ -360,6 +360,7 @@
 	z-index: 99;
 	background: url("img/smileys.jpg");
 	border: 1px solid #ccc;
+	cursor: pointer;
 }
 
 .hide 

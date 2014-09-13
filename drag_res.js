@@ -48,21 +48,22 @@ $( "#window" ).resize(autoScroll);
 
 $( "#window" ).draggable({ disabled: true });
 
-var xpbar = document.getElementById('xp-bar');
-xpbar.addEventListener("mousedown", function() {
-	$( "#window" ).draggable( "option", "disabled", false );
+$("#xp-bar").mousedown(function(){
+    console.log("drag window");
+    $( "#window" ).draggable( "option", "disabled", false );
 });
-xpbar.addEventListener("mouseup", function() {
-	$( "#window" ).draggable( "option", "disabled", true );
-});
-
-/*to fix bug that appears if you put the window up so the bar doesnt show. 
-only with mouse up since you should be able to move it down again*/
-var win = document.getElementById('window');
-win.addEventListener("mouseup", function() {
-	$( "#window" ).draggable( "option", "disabled", true );
+$("#xp-bar").mouseup(function(){
+    $( "#window" ).draggable( "option", "disabled", true );
 });
 
+/*to fix bug that appears if you put the window up so the bar doesnt show. */
+$( "#window" ).mousedown(function(){
+    if($("#window").offset().top < 0)
+    {
+        $( "#window" ).draggable( "option", "disabled", false );
+        $( "#window" ).draggable( "option", "disabled", true );
+    }
+});
 var pos = $('#window').offset();
 document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - offset ) + "px";
 document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - offset ) + "px";
