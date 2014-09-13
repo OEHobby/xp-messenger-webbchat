@@ -18,7 +18,7 @@ $("#smiley-picker").click(function(e){
    var parentOffset = $(this).offset();
    //or $(this).offset(); if you really just want the current element's offset
    var x = e.pageX - parentOffset.left;
-   var y = e.pageY - parentOffset.top;
+   var y = e.pageY - (parentOffset.top+15);
 
    console.log(x + ", " + y);
    x = Math.floor(x/30);
