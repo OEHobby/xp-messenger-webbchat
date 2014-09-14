@@ -58,6 +58,7 @@ function maximizeWindow(offset)
 	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - (offset + 10));
 	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 17) );
 	$("#right-bar").height($(window).height() - offset);
+	autoScroll();
 }
 
 //define all the variabbles needed for the save/restore feature
@@ -112,4 +113,5 @@ function restoreWindow()
 	$("#right-bar").height(rightBarHeight);
 
 	$("#window").offset({ top: windowPosY, left: windowPosX });
+	autoScroll();
 }
