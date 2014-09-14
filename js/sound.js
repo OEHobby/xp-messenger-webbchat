@@ -31,7 +31,10 @@ function playSound(type)
 		{
 			case 'message':
 				var audio = new Audio('//oskaremilsson.se/chat/audio/message.mp3');
-				audio.play();
+				if(!$("#m").is(":focus"))
+				{
+					audio.play();
+				}
 				break;
 			case 'nudge':
 				var audio = new Audio('//oskaremilsson.se/chat/audio/nudge.mp3');

@@ -14,16 +14,16 @@ socket.on('chat message', function(msg){
 	msg = msg.slice(msg.indexOf(": ")+2, msg.length); //message is from : and to the end.
 	msg = secureString(msg);
     nick = secureString(nick);
-
+    if(myNickname != nick)
+	{
+		console.log(myNickname + ", " + nick);
+		playSound("message");
+	}
     msg = createSmileys(msg);
     nick = createSmileys(nick);
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
 	autoScroll();
 	console.log($("#chatWindow")[0].scrollHeight);
-	if(myNickname != nick)
-	{
-		playSound("message");
-	}
   });
 
 socket.on('greeting', function(msg){
