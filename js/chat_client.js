@@ -29,7 +29,7 @@ socket.on('chat message', function(msg){
 socket.on('greeting', function(msg){
 	msg = createSmileys(msg);
 	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
-	autoScroll()
+	autoScroll();
 });
 
 socket.on('privmsg', function(msg){
@@ -65,6 +65,7 @@ socket.on('notify', function(msg){
 			if(myNickname != info)
 			{
 				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has joined the chat.</p>');
+				autoScroll();
 				playSound('login');
 			}
 			break;
