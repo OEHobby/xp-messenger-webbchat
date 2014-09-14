@@ -44,10 +44,10 @@ socket.on('privmsg', function(msg){
 	autoScroll()
 });
 
-socket.on('alert', function(msg){
-	var alert = msg.split(":")[0];
+socket.on('notify', function(msg){
+	var notify = msg.split(":")[0];
 	var info = msg.slice(msg.indexOf(":")+1, msg.length);
-	switch(alert)
+	switch(notify)
 	{
 		case 'nick':
 			myNickname = info;

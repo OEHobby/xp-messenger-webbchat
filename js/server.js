@@ -39,17 +39,17 @@ function init(io, socket)
   
   console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
   socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
-  io.emit('alert', 'chatters:' + chatters);
+  io.emit('notify', 'chatters:' + chatters);
   console.log(chatters);
-  socket.emit('alert', 'nick:' + socket.nickname);
+  socket.emit('notify', 'nick:' + socket.nickname);
   io.emit('greeting', socket.nickname + " has joined the chat.");
-  io.emit('alert', 'newChatter:' + socket.nickname);
+  io.emit('notify', 'newChatter:' + socket.nickname);
 }
 
 function disconnect(io, socket)
 {
   chatters -= 1;
-  io.emit('alert', 'chatters:' + chatters);
+  io.emit('notify', 'chatters:' + chatters);
   io.emit('greeting', socket.nickname + " has left the chat.");
   console.log(socket.nickname + ' disconnected');
 }
@@ -88,7 +88,7 @@ function handleMessage(io, socket, msg)
             console.log("lastNudge: " + lastNudge);
             if((new Date().getTime() - lastNudge) > 1000)
             {
-              io.emit('alert', "nudge");
+              io.emit('notify', "nudge");
               lastNudge = new Date().getTime(); 
             }
             break;
@@ -137,7 +137,7 @@ function changeNick(io, socket, nick)
 			{
             io.emit('greeting', clients[i].nickname + " is now known as: " + nick);
         		clients[i].nickname = nick;
-            clients[i].emit('alert', 'nick:' + nick);
+            clients[i].emit('notify', 'nick:' + nick);
         		console.log(clients[i].id + "is now: " + clients[i].nickname);
         	}
         	else
