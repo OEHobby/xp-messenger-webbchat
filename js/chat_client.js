@@ -64,6 +64,7 @@ socket.on('notify', function(msg){
 		case 'newChatter':
 			if(myNickname != info)
 			{
+				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has joined the chat.</p>');
 				playSound('login');
 			}
 			break;

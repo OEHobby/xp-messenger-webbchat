@@ -42,7 +42,6 @@ function init(io, socket)
   io.emit('notify', 'chatters:' + chatters);
   console.log(chatters);
   socket.emit('notify', 'nick:' + socket.nickname);
-  io.emit('greeting', socket.nickname + " has joined the chat.");
   io.emit('notify', 'newChatter:' + socket.nickname);
 }
 
