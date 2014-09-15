@@ -1,11 +1,6 @@
-var minimize = document.getElementById("minimize-button");
-minimize.addEventListener("click", function(){ console.log("klick"); $("#window").addClass("hide"); });
+$('#minimize-button').click(function(){$("#window").addClass("hide");});
 
-var pickup = document.getElementById("messenger-mini");
-pickup.addEventListener("click", function(){ 
-	console.log("klick"); 
-
-	//$("#window").removeClass("hide"); 
+$('#messenger-mini').click(function(){
 	var classList = $('#window').attr('class').split(/\s+/);
 	$.each( classList, function(index, item)
 	{
@@ -16,6 +11,26 @@ pickup.addEventListener("click", function(){
     	else
     	{
     		$("#window").addClass("hide");
+    	}
+    });
+});
+
+$('#online-minimize-button').click(function(){
+	$("#online-win").addClass("hide");
+});
+
+$('#online-win-mini').click(function(){ 
+	console.log("klick"); 
+	var classList = $('#online-win').attr('class').split(/\s+/);
+	$.each( classList, function(index, item)
+	{
+    	if (item === 'hide') 
+    	{
+       		$("#online-win").removeClass("hide");
+    	}
+    	else
+    	{
+    		$("#online-win").addClass("hide");
     	}
     });
 });

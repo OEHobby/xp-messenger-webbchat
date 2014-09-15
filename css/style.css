@@ -33,7 +33,7 @@ body
 	border-bottom: 1px solid #1356c1;
 }
 
-#minimize-button
+#minimize-button, #online-minimize-button
 {
 	position: absolute;
 	right: 50px;
@@ -41,7 +41,7 @@ body
 	cursor: pointer; 
 }
 
-#maximize-button
+#maximize-button, #online-maximize-button
 {
 	position: absolute;
 	right: 26px;
@@ -49,7 +49,7 @@ body
 	cursor: pointer; 
 }
 
-#close-button
+#close-button, #online-close-button
 {
 	position: absolute;
 	right: 3px;
