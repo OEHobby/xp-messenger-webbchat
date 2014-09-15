@@ -59,7 +59,7 @@ function disconnect(io, socket)
 {
   chatters -= 1;
   io.emit('notify', 'chatters:' + chatters);
-  io.emit('greeting', socket.nickname + " has left the chat.");
+  io.emit('greeting', socket.nickname + " has logged out.");
   io.emit('disconnect', socket.nickname);
   console.log(socket.nickname + ' disconnected');
 }
@@ -180,8 +180,7 @@ function joinChat(io, socket, nick)
       {
         clients[i].emit('notify', 'nick:' + nick);
         console.log(clients[i].id + "is now: " + clients[i].nickname);
-        io.emit('notify', "nickChange:" + clients[i].nickname + "," + nick);
-        io.emit('greeting', nick + " has logged in");
+        io.emit('notify', "newChatter:" + nick);
         clients[i].nickname = nick;
       }
       else

@@ -99,10 +99,16 @@ socket.on('notify', function(msg){
 		case 'newChatter':
 			if(myNickname != info)
 			{
-				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has joined the chat.</p>');
+				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has logged in.</p>');
+				$('.login-win-nick').html(info);
+				$('#login-win').removeClass('hide');
+				window.setTimeout(function(){
+					$('#login-win').addClass('hide');
+				}, 5000);
 				autoScroll();
 				onlines.push(info);
 				printOnlines();
+
 				playSound('login');
 			}
 			break;
