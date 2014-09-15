@@ -3,8 +3,8 @@
 	width: 800px; 
 	height: 630px; 
 	background: #000;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 	display: block;
 	position: relative;
 	background: #e5f0f4; /* Old browsers */

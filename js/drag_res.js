@@ -80,3 +80,7 @@ start.addEventListener("mouseover", function() {
 start.addEventListener("mouseout", function() {
 	$("#start-tips").addClass("hide");
 	});
+
+//Online-window
+
+$( "#online-win" ).draggable();

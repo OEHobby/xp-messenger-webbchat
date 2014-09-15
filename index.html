@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/chat_win.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/start_menu.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/smileys.css">
+	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/online_win.css">
 	<meta property="og:image" content="http://oskaremilsson.se/chat/img/share_img.jpg" />
 </head>
 <body>
@@ -55,6 +56,23 @@
 		</div>
 	</div>
 </div>
+
+<div id="online-win">
+	<div id="online-win-xp-bar" class="blue-bar">
+		<div id="minimize-button" class="blue-xp-button"><p class="xp-button-text">_</p></div>
+		<div id="maximize-button" class="blue-xp-button"><p class="xp-button-text">[]</p></div>
+		<div id="close-button" class="red-xp-button"><p class="xp-button-text">X</p></div>
+	</div>
+	<div id="online-win-head">
+		<div id="online-display-pic"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+		<div id="onlinewin-nickname-holder">
+			<p class="nickName"></p>
+		</div>
+	</div>
+	<div id="online-win-list"><ul class="online-list"></ul></div>
+	<div id="online-win-footer"></div>
+</div>
+
 <div id="start-tips" class="hide"><p>Återställ fönstret.</p></div>
 <div id="start-menu" class="blue-bar">
 	<div id="start-button"><img src="//oskaremilsson.se/chat/img/start.png"></div>
@@ -88,6 +106,20 @@ function newDisplayPicture(id)
 {
 	var offset = Math.floor((Math.random() * 23));
 	$(id).css('background-position', '-' + offset*85 +'px 0');
+	if(id == '#profilePicture2')
+	{
+		$(window).load(newOnlineDisplayPicture('#online-display-pic', offset));
+	}
+}
+
+function newOnlineDisplayPicture(id, offset)
+{
+	if(offset == undefined)
+	{
+		var offset = Math.floor((Math.random() * 23));
+	}
+	$(id).css('background-position', '-' + offset*60 +'px 0');
+
 }
 
 $('#profilePicture1').click(function (){

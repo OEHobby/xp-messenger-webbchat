@@ -36,13 +36,23 @@ function init(io, socket)
   {
     socket.nickname = "MSNLover" + chatters;
   }
-  
+
   console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
   socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
   io.emit('notify', 'chatters:' + chatters);
   console.log(chatters);
   socket.emit('notify', 'nick:' + socket.nickname);
   io.emit('notify', 'newChatter:' + socket.nickname);
+
+  var clients = findClientsSocket();
+  for(var i in clients)
+  {
+    if(socket.nickname != clients[i].nickname)
+    {
+      console.log("emits to: ", socket.nickname + ": " + clients[i].nickname);
+      socket.emit('online', clients[i].nickname);
+    }
+  }
 }
 
 function disconnect(io, socket)
@@ -50,6 +60,7 @@ function disconnect(io, socket)
   chatters -= 1;
   io.emit('notify', 'chatters:' + chatters);
   io.emit('greeting', socket.nickname + " has left the chat.");
+  io.emit('disconnect', socket.nickname);
   console.log(socket.nickname + ' disconnected');
 }
 
@@ -71,7 +82,7 @@ function handleMessage(io, socket, msg)
             break;
           case '!help':
             msg = 'Change nick with /nick nick eg. /nick oskar. Features: resize, move and mini/maximize/restore the chat-window. ';
-            mag += 'Send nudges to everyone, mute the sound (down at the clock). Choose smileys from the menu. Send spotify-widgets with !send <link>.'
+            msg += 'Send nudges to everyone, mute the sound (down at the clock). Choose smileys from the menu. Send spotify-widgets with !send <link>.'
             msg += 'Press Start to reset window position. Press a display picture to change to random new one. <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">Project on Git</a>';
             socket.emit('greeting', msg);
             break;
