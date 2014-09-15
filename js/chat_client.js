@@ -106,7 +106,12 @@ socket.on('notify', function(msg){
 				printOnlines();
 				playSound('login');
 			}
-
+			break;
+		case 'nickChange':
+			var oldNick = info.split(",")[0]; //server notifies "oldNick,NewNick"
+			var newNick = info.split(",")[1];
+			onlines[onlines.indexOf(oldNick)] = newNick;
+			printOnlines();
 			break;
 	}
 });
@@ -129,7 +134,10 @@ function printOnlines()
 	for(var i in onlines)
 	{
 		console.log(onlines[i]);
-		$('.online-list').html( $('.online-list').html() + '<li>' + onlines[i] + '</li>');
+		if(myNickname != onlines[i])
+		{
+			$('.online-list').html( $('.online-list').html() + '<li>' + createSmileys(onlines[i]) + '</li>');
+		}
 	}
 	if(onlines[0] == undefined)
 	{

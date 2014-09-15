@@ -145,10 +145,11 @@ function changeNick(io, socket, nick)
       found = true;
 			if(!nickTaken(nick) && nick.length > 2 && nick.length < 20)
 			{
-            io.emit('greeting', clients[i].nickname + " is now known as: " + nick);
-        		clients[i].nickname = nick;
             clients[i].emit('notify', 'nick:' + nick);
         		console.log(clients[i].id + "is now: " + clients[i].nickname);
+            io.emit('notify', "nickChange:" + clients[i].nickname + "," + nick);
+            io.emit('greeting', clients[i].nickname + " is now known as: " + nick);
+            clients[i].nickname = nick;
         	}
         	else
         	{
