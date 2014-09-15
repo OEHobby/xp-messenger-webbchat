@@ -20,7 +20,8 @@ pickup.addEventListener("click", function(){
     });
 });
 
-var offset = 7;
+var xoffset = 2;
+var yoffset = $('#xp-bar').outerHeight()+1;
 var isMaximized = false;
 
 var maxi = document.getElementById("maximize-button");
@@ -28,7 +29,7 @@ maxi.addEventListener("click", function(){
 	if(!isMaximized)
 	{
 		saveWindow();
-		maximizeWindow(offset);
+		maximizeWindow(xoffset, yoffset);
 		isMaximized = true;
 	}
 	else
@@ -39,25 +40,25 @@ maxi.addEventListener("click", function(){
 	    
 });
 
-function maximizeWindow(offset)
+function maximizeWindow(xoffset, yoffset)
 {
 	saveWindow();
 	//maximize window
-	$("#window").width($(window).innerWidth() - offset);
-	$("#window").height($(window).innerHeight() - offset);
+	$("#window").width($(window).innerWidth() - xoffset);
+	$("#window").height($(window).innerHeight() - yoffset);
 	$("#window").offset({top:0, left:0});
 	//maximize head, xp-bar, bottom, textfield, smiley-bar
-	$("#head").width($(window).width() - offset);
-	$("#bottomBar").width($(window).width() - offset);
-	$("#xp-bar").width($(window).width() - offset);
-	$("#nickwrapper").width($(window).width() - offset);
+	$("#head").width($(window).width() - xoffset);
+	$("#bottomBar").width($(window).width() - xoffset);
+	$("#xp-bar").width($(window).width() - xoffset);
+	$("#nickwrapper").width($(window).width() - xoffset);
 
-	$("#text-field").width( $(window).width() - $("#rightBar").width()  - offset);
-	$("#m").width( $(window).width() - $("#rightBar").width()  - offset) ;
-	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - offset);
-	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - (offset + 10));
-	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 17) );
-	$("#right-bar").height($(window).height() - offset);
+	$("#text-field").width( $(window).width() - $("#rightBar").width()  - xoffset);
+	$("#m").width( $(window).width() - $("#rightBar").width()  -xoffset) ;
+	$("#smiley-bar").width( $(window).width() - $("#rightBar").width() - xoffset);
+	$("#chatWindow").width( $(window).width() - $("#rightBar").width()  - (xoffset + 10));
+	$("#chatWindow").height( $(window).height() - ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 10 + yoffset) );
+	$("#right-bar").height($(window).height() - yoffset);
 	autoScroll();
 }
 

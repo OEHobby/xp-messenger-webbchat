@@ -65,8 +65,8 @@ $( "#window" ).mousedown(function(){
     }
 });
 var pos = $('#window').offset();
-document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - offset ) + "px";
-document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - offset ) + "px";
+document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - xoffset ) + "px";
+document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - yoffset ) + "px";
 
 
 //restore window is something unexpected happens, like godzilla eats it.
