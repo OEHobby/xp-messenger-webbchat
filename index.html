@@ -154,6 +154,7 @@ $(window).load(newDisplayPicture('#profilePicture2'));
 
 var time = new Date();
 $(".clock-time").html(time.toTimeString().slice(0, 5));
+setInterval(function(){ time = new Date(); $(".clock-time").html(time.toTimeString().slice(0, 5)); }, 3000);
 
 $('.clock-symbol-5').click(function(){
 	$('#online-win').css('z-index', "10");
