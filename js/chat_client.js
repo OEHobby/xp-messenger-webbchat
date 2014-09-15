@@ -2,7 +2,20 @@ var myNickname = "";
 var socket = io();
 var onlines = [];
 
-$('form').submit(function(){
+//welcome nick-picker
+$('#nick-form').submit(function(){
+	socket.emit('chat message', "/nick " + $('#nick-picker').val());
+	$('#nick-picker').val('');
+	$("#welcome").addClass('hide');
+	$("#online-win").removeClass('hide');
+	$("#window").removeClass('hide');
+	$("#start-menu").removeClass('hide');
+	playSound('startup');
+	return false;
+  });
+
+//messages
+$('#message-form').submit(function(){
 	socket.emit('chat message', $('#m').val());
 	$('#m').val('');
 	$("#smiley-picker").addClass('hide');

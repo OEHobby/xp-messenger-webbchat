@@ -188,3 +188,8 @@
 	right: 140px;
 	cursor: pointer;
 }
+
+#start-menu.hide
+{
+	display: none;
+}

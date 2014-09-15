@@ -5,6 +5,7 @@ body
 	background: url("../img/xp.jpg");
 	background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     background-position: center; 
     overflow: hidden;
 }

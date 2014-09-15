@@ -3,15 +3,27 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/style.css">
-	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/chat_win.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/start_menu.css">
+	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/chat_win.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/smileys.css">
 	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/online_win.css">
+	<link rel="stylesheet" type="text/css" href="//oskaremilsson.se/chat/css/welcome.css">
 	<meta property="og:image" content="http://oskaremilsson.se/chat/img/share_img.jpg" />
 </head>
 <body>
+<div id="welcome">
+	<div id="welcome-wrapper">
+		<div id="welcome-form-holder">
+			<h1>Choose your nickname:</h1>
+			<form action="" id="nick-form" >
+					<input type="text" id="nick-picker" autocomplete="off"  pattern=".{3,15}" required title="3 to 15 characters"></textarea>
+			<button class="welcome-button">Join Chat</button></form>
+		</div>
+	</div>
+</div>
+
 <div id="wrapper">
-	<div id="window" class="ui-widget-content">
+	<div id="window" class="ui-widget-content hide">
 		<div id="xp-bar" class="blue-bar">
 			<p class="program-title">MSN Messenger - (offline) - make sure you're requesting <a href="//msn.oskaremilsson.se:3000">url:3000</a></p>
 			<div id="minimize-button" class="blue-xp-button"><p class="xp-button-text">_</p></div>
@@ -49,7 +61,7 @@
 				<div class="smiley-symbol smiley-symbol-6"></div>
 			</div>
 			<div id="text-field">
-				<form action="">
+				<form action="" id="message-form">
 					<textarea type="text" id="m" autocomplete="off"></textarea>
 			</div>
 			<button class="button">Send</button></form>
@@ -57,7 +69,7 @@
 	</div>
 </div>
 
-<div id="online-win">
+<div id="online-win" class="hide">
 	<div id="online-win-xp-bar" class="blue-bar">
 		<div id="minimize-button" class="blue-xp-button"><p class="xp-button-text">_</p></div>
 		<div id="maximize-button" class="blue-xp-button"><p class="xp-button-text">[]</p></div>
@@ -74,7 +86,7 @@
 </div>
 
 <div id="start-tips" class="hide"><p>Återställ fönstret.</p></div>
-<div id="start-menu" class="blue-bar">
+<div id="start-menu" class="blue-bar hide">
 	<div id="start-button"><img src="//oskaremilsson.se/chat/img/start.png"></div>
 	<div id="ie-short-small"></div>
 	<div id="messenger-mini"><p class="start-menu-link">MSN Messenger</p></div>
@@ -133,8 +145,6 @@ $('#profilePicture2').click(function (){
 //random at init
 $(window).load(newDisplayPicture('#profilePicture1'));
 $(window).load(newDisplayPicture('#profilePicture2'));
-
-playSound('startup');
 
 var time = new Date();
 $(".clock-time").html(time.toTimeString().slice(0, 5));
