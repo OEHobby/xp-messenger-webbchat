@@ -118,4 +118,8 @@ function printOnlines()
 		console.log(onlines[i]);
 		$('.online-list').html( $('.online-list').html() + '<li>' + onlines[i] + '</li>');
 	}
+	if(onlines[0] == undefined)
+	{
+		$('.online-list').html("<li class='offline'>Noone online :( </li>");
+	}
 }

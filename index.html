@@ -139,6 +139,11 @@ playSound('startup');
 var time = new Date();
 $(".clock-time").html(time.toTimeString().slice(0, 5));
 
+$('.clock-symbol-5').click(function(){
+	$('#online-win').css('z-index', "10");
+	$('#window').css('z-index', "1");
+});
+
 $('#online-win').mousedown(function(){
 	$('#online-win').css('z-index', "10");
 	$('#window').css('z-index', "1");
