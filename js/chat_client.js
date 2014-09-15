@@ -10,7 +10,6 @@ $('#nick-form').submit(function(){
 	$("#online-win").removeClass('hide');
 	$("#window").removeClass('hide');
 	$("#start-menu").removeClass('hide');
-	playSound('startup');
 	return false;
   });
 
