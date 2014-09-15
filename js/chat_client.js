@@ -4,7 +4,7 @@ var onlines = [];
 
 //welcome nick-picker
 $('#nick-form').submit(function(){
-	socket.emit('chat message', "/nick " + $('#nick-picker').val());
+	socket.emit('chat message', "/join " + $('#nick-picker').val());
 	$('#nick-picker').val('');
 	$("#welcome").addClass('hide');
 	$("#online-win").removeClass('hide');

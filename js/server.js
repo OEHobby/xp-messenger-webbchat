@@ -42,7 +42,7 @@ function init(io, socket)
   io.emit('notify', 'chatters:' + chatters);
   console.log(chatters);
   socket.emit('notify', 'nick:' + socket.nickname);
-  io.emit('notify', 'newChatter:' + socket.nickname);
+  //io.emit('notify', 'newChatter:' + socket.nickname);
 
   var clients = findClientsSocket();
   for(var i in clients)
@@ -80,9 +80,16 @@ function handleMessage(io, socket, msg)
               changeNick(io, socket, newNick);
             }
             break;
+          case '/join':
+            var newNick = msg.split(" ")[1];
+            if(newNick != undefined)
+            {
+              joinChat(io, socket, newNick);
+            }
+            break;
           case '!help':
             msg = 'Change nick with /nick nick eg. /nick oskar. Features: resize, move and mini/maximize/restore the chat-window. ';
-            msg += 'Send nudges to everyone, mute the sound (down at the clock). Choose smileys from the menu. Send spotify-widgets with !send <link>.'
+            msg += 'Send nudges to everyone, mute the sound (down at the clock). Choose smileys from the menu.';
             msg += 'Press Start to reset window position. Press a display picture to change to random new one. <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">Project on Git</a>';
             socket.emit('greeting', msg);
             break;
@@ -157,6 +164,32 @@ function changeNick(io, socket, nick)
         	}
         }
     }
+}
+
+function joinChat(io, socket, nick)
+{
+  var found = false;
+  var clients = findClientsSocket();
+  for (var i = 0; i < clients.length && !found; i++) 
+  {
+    console.log("searching for: " + socket.id + " found: " + clients[i].id);
+    if(clients[i].id == socket.id)
+    {
+      found = true;
+      if(!nickTaken(nick) && nick.length > 2 && nick.length < 20)
+      {
+        clients[i].emit('notify', 'nick:' + nick);
+        console.log(clients[i].id + "is now: " + clients[i].nickname);
+        io.emit('notify', "nickChange:" + clients[i].nickname + "," + nick);
+        io.emit('greeting', nick + " has logged in");
+        clients[i].nickname = nick;
+      }
+      else
+      {
+        console.log("nick taken");
+      }
+    }
+  }
 }
 
 function nickTaken(nick)
