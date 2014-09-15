@@ -29,6 +29,7 @@ body
 	background: linear-gradient(to bottom,  #1558c1 0%,#4495ff 2%,#0253e3 7%,#006cfb 57%,#0260f6 98%,#154399 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1558c1', endColorstr='#154399',GradientType=0 ); /* IE6-9 */
 	border-top: 1px solid #1356c1;
+	border-bottom: 1px solid #1356c1;
 }
 
 #minimize-button

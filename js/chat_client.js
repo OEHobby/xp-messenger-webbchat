@@ -89,9 +89,9 @@ socket.on('notify', function(msg){
 			{
 				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has joined the chat.</p>');
 				autoScroll();
-				$('#online-win-list').html( $('#online-win-list').html() + '<p class="online-list">' + info + '</p>' );
-				playSound('login');
 				onlines.push(info);
+				printOnlines();
+				playSound('login');
 			}
 
 			break;
