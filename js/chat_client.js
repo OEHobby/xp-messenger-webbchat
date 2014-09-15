@@ -5,13 +5,24 @@ var onlines = [];
 //welcome nick-picker
 $('#nick-form').submit(function(){
 	socket.emit('chat message', "/join " + $('#nick-picker').val());
-	$('#nick-picker').val('');
-	$("#welcome").addClass('hide');
-	$("#online-win").removeClass('hide');
-	$("#window").removeClass('hide');
-	$("#start-menu").removeClass('hide');
 	return false;
   });
+
+socket.on('nickFree', function(msg){
+		console.log(msg.split(":")[1]);
+		if(msg.split(":")[1] == '1')
+		{
+			$('#nick-picker').val('');
+			$("#welcome").addClass('hide');
+			$("#online-win").removeClass('hide');
+			$("#window").removeClass('hide');
+			$("#start-menu").removeClass('hide');
+		}
+		else
+		{
+			$('#welcome-form-holder').html( $('#welcome-form-holder').html() + "<p>Nick taken, choose another one.</p>");
+		}
+	});
 
 //messages
 $('#message-form').submit(function(){

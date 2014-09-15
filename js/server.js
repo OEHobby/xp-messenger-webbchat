@@ -82,6 +82,7 @@ function handleMessage(io, socket, msg)
             break;
           case '/join':
             var newNick = msg.split(" ")[1];
+            console.log(newNick);
             if(newNick != undefined)
             {
               joinChat(io, socket, newNick);
@@ -179,13 +180,17 @@ function joinChat(io, socket, nick)
       if(!nickTaken(nick) && nick.length > 2 && nick.length < 20)
       {
         clients[i].emit('notify', 'nick:' + nick);
-        console.log(clients[i].id + "is now: " + clients[i].nickname);
+        console.log(clients[i].id + "was: " + clients[i].nickname);
         io.emit('notify', "newChatter:" + nick);
         clients[i].nickname = nick;
+        console.log(clients[i].id + " is now " + clients[i].nickname);
+        clients[i].emit('nickFree', 'ok:1');
       }
       else
       {
         console.log("nick taken");
+        clients[i].emit('nickFree', 'ok:0');
+        console.log("emit to " + clients[i].nickname);
       }
     }
   }
