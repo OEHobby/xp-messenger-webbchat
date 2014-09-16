@@ -1,4 +1,4 @@
-#window
+.window
 {
 	width: 800px; 
 	height: 630px; 
@@ -28,7 +28,7 @@
 	border-top: 0px;
 }
 
-#head
+.head
 {
 	float: left;
 	width: 800px;
@@ -47,7 +47,7 @@
 	left: 0;
 }
 
-#bottomBar
+.bottomBar
 {
 	height: 115px;
 	width: 800px;
@@ -56,7 +56,7 @@
 	left: 0;
 }
 
-#xp-bar
+.xp-bar
 {
 	height: 30px;
 	width: 800px;
@@ -65,7 +65,7 @@
 	left: 0;
 }
 
-#chatWindow
+.chatWindow
 {
 	width: 690px;
 	height: 390px;
@@ -81,7 +81,7 @@
 	overflow-x: hidden;
 }
 
-#rightBar
+.rightBar
 {
 	width: 100px;
 	height: 525px;
@@ -90,7 +90,7 @@
 	right: 0;
 }
 
-#profilePicture1
+.profilePicture1
 {
 	position: absolute;
 	right: 5px;
@@ -101,7 +101,7 @@
 	cursor: pointer; 
 }
 
-#profilePicture2
+.profilePicture2
 {
 	position: absolute;
 	right: 5px;
@@ -112,7 +112,7 @@
 	cursor: pointer; 
 }
 
-#msn-head
+.msn-head
 {
 	position: absolute;
 	top: 8px;
@@ -179,7 +179,7 @@
 	width: 22px;
 }
 
-#smiley-bar
+.smiley-bar
 {
 	height: 30px;
 	width: 700px;
@@ -250,7 +250,7 @@
 	width: 25px;
 }
 
-#nickWrapper
+.nickWrapper
 {
 	height: 35px;
 	width: 800px;
@@ -284,7 +284,7 @@
 	color: #7b99a1;
 }
 
-#text-field
+.text-field
 {
 	position: absolute;
 	bottom: 29px;
@@ -295,7 +295,7 @@
 	border-top: 0;
 }
 
-#m
+.m
 {
 	resize:none;
 	margin: 0 0 0 0;
@@ -349,7 +349,7 @@
 	background-position: 0 0;
 }
 
-#smiley-picker
+.smiley-picker
 {
 	width: 300px;
 	height: 200px;

@@ -1,20 +1,20 @@
 $('.smiley-symbol-1').click(function(){
 	console.log("klick");
-	var classList = $('#smiley-picker').attr('class').split(/\s+/);
+	var classList = $('.smiley-picker').attr('class').split(/\s+/);
 	$.each( classList, function(index, item)
 	{
     	if (item === 'hide') 
     	{
-       		$("#smiley-picker").removeClass("hide");
+       		$(".smiley-picker").removeClass("hide");
     	}
     	else
     	{
-    		$("#smiley-picker").addClass("hide");
+    		$(".smiley-picker").addClass("hide");
     	}
     });
 });
 
-$("#smiley-picker").click(function(e){
+$(".smiley-picker").click(function(e){
    var parentOffset = $(this).offset();
    //or $(this).offset(); if you really just want the current element's offset
    var x = e.pageX - parentOffset.left;
@@ -32,16 +32,16 @@ $("#smiley-picker").click(function(e){
                 ["(S)", "(*)", "(#)", "(R)", "({)","(})", "(K)", "(F)", "(W)", "(O)"]];
    console.log(smiley[y][x]);
    /* add the clicked code to textarea */
-   $("#m").val($("#m").val() + smiley[y][x]);
+   $(".m").val($(".m").val() + smiley[y][x]);
 });
 
 
-$('#window').click(function(e){
+$('.window').click(function(e){
     console.log("klick");
-    var smileyPickerX = $("#smiley-picker").offset().left;
-    var smileyPickerY = $("#smiley-picker").offset().top;
-    var smileyPickerWidth = $("#smiley-picker").width();
-    var smileyPickerHeight = $("#smiley-picker").height();
+    var smileyPickerX = $(".smiley-picker").offset().left;
+    var smileyPickerY = $(".smiley-picker").offset().top;
+    var smileyPickerWidth = $(".smiley-picker").width();
+    var smileyPickerHeight = $(".smiley-picker").height();
     var clickX = e.pageX;
     var clickY = e.pageY;
 
@@ -53,7 +53,7 @@ $('#window').click(function(e){
         var pickerLinkHeight = $(".smiley-symbol-1").height();
         if(clickX < pickerLinkX || clickX > (pickerLinkX + pickerLinkWidth) || clickY < pickerLinkY || clickY > (pickerLinkY + pickerLinkHeight))
         {
-            $("#smiley-picker").addClass("hide");
+            $(".smiley-picker").addClass("hide");
         }
     }
     else

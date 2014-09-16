@@ -17,6 +17,7 @@
 	<title>Messenger</title>
 </head>
 <body>
+<div id="welcomebg"></div>
 <div id="welcome">
 	<div id="welcome-wrapper">
 		<div id="welcome-form-holder">
@@ -30,16 +31,16 @@
 </div>
 
 <div id="wrapper">
-	<div id="window" class="ui-widget-content hide">
-		<div id="xp-bar" class="blue-bar">
+	<div id="" class="window ui-widget-content hide">
+		<div id="" class="xp-bar blue-bar">
 			<p class="program-title">MSN Messenger - (offline) - make sure you're requesting <a href="//msn.oskaremilsson.se:3000">url:3000</a></p>
-			<div id="minimize-button" class="blue-xp-button"><p class="xp-button-text">_</p></div>
-			<div id="maximize-button" class="blue-xp-button"><p class="xp-button-text">[]</p></div>
-			<div id="close-button" class="red-xp-button"><p class="xp-button-text">X</p></div>
+			<div id="" class="minimize-button blue-xp-button"><p class="xp-button-text">_</p></div>
+			<div id="" class="maximize-button blue-xp-button"><p class="xp-button-text">[]</p></div>
+			<div id="" class="close-button red-xp-button"><p class="xp-button-text">X</p></div>
 		</div>
-		<div id="head">
-			<div id="nickWrapper">
-				<div id="msn-head"></div>
+		<div id="" class="head">
+			<div id="" class="nickWrapper">
+				<div id="" class="msn-head"></div>
 				<p class="nickName">Kittyface</p>
 				<p class="nickStatus">Filurar på något mystiskt.</p>
 			</div>
@@ -51,15 +52,15 @@
 			<div class="head-symbol head-symbol-6"></div>
 			<div class="head-symbol head-symbol-7"></div>
 		</div>
-		<div id="chatWindow"></div>
-		<div id="smiley-picker" class="hide"></div>
-		<div id="rightBar">
-			<div id="profilePicture1" class="profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+		<div id="" class="chatWindow"></div>
+		<div id="" class="smiley-picker hide"></div>
+		<div id="" class="rightBar">
+			<div id="" class="profilePicture1 profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
 			
 		</div>
-		<div id="bottomBar">
-			<div id="profilePicture2" class="profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
-			<div id="smiley-bar">
+		<div id="" class="bottomBar">
+			<div id="" class="profilePicture2 profile-picture"><img src="//oskaremilsson.se/chat/img/profile_pic.png"></div>
+			<div id="" class="smiley-bar">
 				<div class="smiley-symbol smiley-symbol-1"></div>
 				<div class="smiley-symbol smiley-symbol-2"></div>
 				<div class="smiley-symbol smiley-symbol-3"></div>
@@ -67,9 +68,9 @@
 				<div class="smiley-symbol smiley-symbol-5"></div>
 				<div class="smiley-symbol smiley-symbol-6"></div>
 			</div>
-			<div id="text-field">
-				<form action="" id="message-form">
-					<textarea type="text" id="m" autocomplete="off"></textarea>
+			<div id="" class="text-field">
+				<form action="" class="message-form">
+					<textarea type="text" class="m" autocomplete="off"></textarea>
 			</div>
 			<button class="button">Send</button></form>
 		</div>
@@ -88,7 +89,7 @@
 			<p class="nickName"></p>
 		</div>
 	</div>
-	<div id="online-win-list"><ul class="online-list"><li class="offline">Noone online :( </li></ul></div>
+	<div id="online-win-list"><ul class="online-list"><li class="online-list-li offline">Noone online :( </li></ul></div>
 	<div id="online-win-footer"></div>
 </div>
 
@@ -144,17 +145,17 @@ function newOnlineDisplayPicture(id, offset)
 
 }
 
-$('#profilePicture1').click(function (){
-	newDisplayPicture('#profilePicture1');
+$('.profilePicture1').click(function (){
+	newDisplayPicture('.profilePicture1');
 });
 
-$('#profilePicture2').click(function (){
-	newDisplayPicture('#profilePicture2');
+$('.profilePicture2').click(function (){
+	newDisplayPicture('.profilePicture2');
 });
 
 //random at init
-$(window).load(newDisplayPicture('#profilePicture1'));
-$(window).load(newDisplayPicture('#profilePicture2'));
+$(window).load(newDisplayPicture('.profilePicture1'));
+$(window).load(newDisplayPicture('.profilePicture2'));
 
 var time = new Date();
 $(".clock-time").html(time.toTimeString().slice(0, 5));
@@ -162,17 +163,17 @@ setInterval(function(){ time = new Date(); $(".clock-time").html(time.toTimeStri
 
 $('.clock-symbol-5').click(function(){
 	$('#online-win').css('z-index', "10");
-	$('#window').css('z-index', "1");
+	$('.window').css('z-index', "1");
 });
 
 $('#online-win').mousedown(function(){
 	$('#online-win').css('z-index', "10");
-	$('#window').css('z-index', "1");
+	$('.window').css('z-index', "1");
 });
 
-$('#window').mousedown(function(){
+$('.window').mousedown(function(){
 	$('#online-win').css('z-index', "1");
-	$('#window').css('z-index', "10");
+	$('.window').css('z-index', "10");
 });
 
 </script>

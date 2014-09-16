@@ -2,22 +2,22 @@ function moveWindow(jump, dir)
 {
 	if(dir == "right")
 	{
-		$("#window").offset({ top: $("#window").position().top, left: ($("#window").position().left + jump) });
+		$(".window").offset({ top: $(".window").position().top, left: ($(".window").position().left + jump) });
 		console.log("moving right.");
 	}
 	else if(dir == "left")
 	{
-		$("#window").offset({ top: $("#window").position().top, left: ($("#window").position().left - jump) });
+		$(".window").offset({ top: $(".window").position().top, left: ($(".window").position().left - jump) });
 		console.log("moving left.");
 	}
 	else if(dir == "up")
 	{
-		$("#window").offset({ top: ($("#window").position().top - jump), left: $("#window").position().left });
+		$(".window").offset({ top: ($(".window").position().top - jump), left: $(".window").position().left });
 		console.log("moving up.");
 	}
 	else if(dir == "down")
 	{
-		$("#window").offset({ top: ($("#window").position().top + jump), left: $("#window").position().left });
+		$(".window").offset({ top: ($(".window").position().top + jump), left: $(".window").position().left });
 		console.log("moving down.");
 	}
 }
@@ -45,6 +45,6 @@ function nudge(jump)
 }
 
 $('.smiley-symbol-3').click(function(){
-	$("#m").val('!nudge');
+	$(".m").val('!nudge');
 	$("form").submit();
 });

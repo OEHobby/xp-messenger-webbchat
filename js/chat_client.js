@@ -11,10 +11,10 @@ $('#nick-form').submit(function(){
   });
 
 //messages
-$('#message-form').submit(function(){
-	socket.emit('chat message', $('#m').val());
-	$('#m').val('');
-	$("#smiley-picker").addClass('hide');
+$('.message-form').submit(function(){
+	socket.emit('chat message', $('.m').val());
+	$('.m').val('');
+	$(".smiley-picker").addClass('hide');
 	return false;
   });
 
@@ -25,8 +25,9 @@ socket.on('join', function(msg){
 		{
 			$('#nick-picker').val('');
 			$("#welcome").addClass('hide');
+			$("#welcomebg").addClass('hide');
 			$("#online-win").removeClass('hide');
-			$("#window").removeClass('hide');
+			$(".window").removeClass('hide');
 			$("#start-menu").removeClass('hide');
 		}
 		else
@@ -57,14 +58,14 @@ socket.on('chat message', function(msg){
 	}
     msg = createSmileys(msg);
     nick = createSmileys(nick);
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
+	$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">' + nick + ' said:</p>' + '<p class="chatMessage">' + msg + '</p>');
 	autoScroll();
-	console.log($("#chatWindow")[0].scrollHeight);
+	console.log($(".chatWindow")[0].scrollHeight);
   });
 
 socket.on('greeting', function(msg){
 	msg = createSmileys(msg);
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
+	$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + msg + '.</p>');
 	autoScroll();
 });
 
@@ -97,7 +98,7 @@ socket.on('privmsg', function(msg){
 	nick = secureString(nick);
     msg = createSmileys(msg);
     nick = createSmileys(nick);
-	$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">' + nick + ' said in private:</p>' + '<p class="chatMessage">' + msg + '.</p>');
+	$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">' + nick + ' said in private:</p>' + '<p class="chatMessage">' + msg + '.</p>');
 	autoScroll()
 });
 
@@ -121,11 +122,11 @@ socket.on('notify', function(msg){
 		case 'newChatter':
 			if(myNickname != info)
 			{
-				$('#chatWindow').html( $('#chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has logged in.</p>');
+				$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has logged in.</p>');
 				$('.login-win-nick').html(info);
-				$('#login-win').removeClass('hide');
+				$('.login-win').removeClass('hide');
 				window.setTimeout(function(){
-					$('#login-win').addClass('hide');
+					$('.login-win').addClass('hide');
 				}, 5000);
 				autoScroll();
 				onlines.push(info);
@@ -145,7 +146,7 @@ socket.on('notify', function(msg){
 
 function autoScroll()
 {
-	$("#chatWindow").scrollTop($("#chatWindow")[0].scrollHeight);
+	$(".chatWindow").scrollTop($(".chatWindow")[0].scrollHeight);
 }
 
 function secureString(str)
@@ -163,7 +164,7 @@ function printOnlines()
 		console.log(onlines[i]);
 		if(myNickname != onlines[i])
 		{
-			$('.online-list').html( $('.online-list').html() + '<li>' + createSmileys(onlines[i]) + '</li>');
+			$('.online-list').html( $('.online-list').html() + '<li class="online-list-li" id="' + onlines[i] +'">' + createSmileys(onlines[i]) + '</li>');
 		}
 	}
 	if(onlines[0] == undefined)
@@ -255,3 +256,4 @@ function createSpotifyWidget(msg)
 
   return widget;
 }
+
