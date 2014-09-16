@@ -114,10 +114,10 @@ function handleMessage(io, socket, msg)
       {
         if(msg != "" && msg != " ")
         {
-          if(isLink(msg))
+          /*if(isLink(msg))
           {
             msg = createLink(msg);
-          }
+          }*/
           msg = socket.nickname + ": " + msg;
           io.emit('chat message', msg);
           console.log(msg);
@@ -224,7 +224,7 @@ function findClientsSocket(roomId, namespace) {
     }
     return res;
 }
-
+/*
 function isLink(msg)
 {
   var bool = false;
@@ -248,11 +248,11 @@ function createLink(msg) //fix problem with the need of space after link. Fix mo
   console.log("linkend: " + linkEnd);
   link = msg.slice(linkStart, (linkEnd+1));
   console.log(link);
-  msg = msg.replace(link, "<a href='" + link + "' target='_blank'>" + link + "</a>");
+  msg = msg.replace(link, "<a href=''" + link + "'' target='_blank'>" + link + "</a>");
 
   return msg;
 }
-
+*/
 function createSpotifyWidget(msg)
 {
   var widget = 0;

@@ -43,6 +43,12 @@ socket.on('chat message', function(msg){
 	console.log("nick: " + nick);
 	msg = msg.slice(msg.indexOf(": ")+2, msg.length); //message is from : and to the end.
 	msg = secureString(msg);
+
+	if(isLink(msg))
+	{
+		msg = createLink(msg);
+	}
+
     nick = secureString(nick);
     if(myNickname != nick)
 	{
@@ -164,4 +170,49 @@ function printOnlines()
 	{
 		$('.online-list').html("<li class='offline'>Noone online :( </li>");
 	}
+}
+
+function isLink(msg)
+{
+  var bool = false;
+  console.log("checking for links");
+  if( msg.indexOf("://") > -1)
+  {
+    bool = true;
+    console.log("found ://");
+  }
+  return bool;
+}
+
+function createLink(msg) //fix problem with the need of space after link. Fix more than one link.
+{
+	var linkStart = 0;
+	var link = "";
+	var linkEnd = 0;
+	for(var i = 0; i < msg.length; i+=5)
+	{
+	  
+	  if(msg.indexOf("://", linkEnd) > -1)
+	  {
+			linkStart = msg.indexOf("://", linkEnd);
+			console.log("linkstart: " + linkStart);
+			console.log("found one link");
+
+			if(msg.indexOf(" ", linkStart) > -1)
+			{
+				linkEnd = msg.indexOf(" ", linkStart);
+			}
+			else
+			{
+				linkEnd = msg.length;
+			}
+
+			console.log("linkend: " + linkEnd);
+			link = msg.slice((linkStart+3), (linkEnd));
+			console.log(link);
+			msg = msg.replace(link, "<a href='//" + link + "' target='_blank'>" + link + "</a>");
+			console.log("ett varv");
+		}
+	}
+  return msg;
 }
