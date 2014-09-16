@@ -32,7 +32,7 @@ socket.on('join', function(msg){
 		else
 		{
 			console.log("taken");
-			$('#nick-form').html( "<label>Nick taken, choose another one.</label>" + $('#nick-form').html());
+			$('#nick-form label').html( "Nick taken, choose another one." );
 			$('#nick-picker').val(myNickname);
 		}
 });
