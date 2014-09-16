@@ -32,47 +32,51 @@ function bindResize(id, parent, dir, offset1, offset2) //dir(0 = w, 1 = h, 2 = b
     }
 }
 
-$( "#window" ).resizable();
+var test = [];
+test.push("window");
 
-bindResize("#head", "#window", 0);
-bindResize("#bottomBar", "#window", 0);
-bindResize("#xp-bar", "#window", 0);
-bindResize("#nickwrapper", "#window", 0);
-bindResize("#text-field", "#window", 0, $("#rightBar").width());
-bindResize("#m", "#window", 0, $("#rightBar").width());
-bindResize("#smiley-bar", "#window", 0, $("#rightBar").width());
-bindResize(".chatMessage", "#window", 0, $("#rightBar").width() + 50);
-bindResize("#chatWindow", "#window", 2, $("#rightBar").width()+10 , ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 10) );
+$( '#'+test[0] ).resizable();
 
-$( "#window" ).resize(autoScroll);
+bindResize("#head", '#'+test[0], 0);
+bindResize("#bottomBar", '#'+test[0], 0);
+bindResize("#xp-bar", '#'+test[0], 0);
+bindResize("#nickwrapper", '#'+test[0], 0);
+bindResize("#text-field", '#'+test[0], 0, $("#rightBar").width());
+bindResize("#m", '#'+test[0], 0, $("#rightBar").width());
+bindResize("#smiley-bar", '#'+test[0], 0, $("#rightBar").width());
+bindResize(".chatMessage", '#'+test[0], 0, $("#rightBar").width() + 50);
+bindResize("#chatWindow", '#'+test[0], 2, $("#rightBar").width()+10 , ($("#head").height() + $("#bottomBar").height() + $("#xp-bar").height() + 10) );
 
-$( "#window" ).draggable({ disabled: true });
+$( '#'+test[0] ).resize(autoScroll);
+
+$( '#'+test[0] ).draggable({ disabled: true });
 
 $("#xp-bar").mousedown(function(){
     console.log("drag window");
-    $( "#window" ).draggable( "option", "disabled", false );
+    $( '#'+test[0] ).draggable( "option", "disabled", false );
 });
 $("#xp-bar").mouseup(function(){
-    $( "#window" ).draggable( "option", "disabled", true );
+    $( '#'+test[0] ).draggable( "option", "disabled", true );
 });
 
 /*to fix bug that appears if you put the window up so the bar doesnt show. */
-$( "#window" ).mousedown(function(){
-    if($("#window").offset().top < 0)
+$( '#'+test[0] ).mousedown(function(){
+    if($( '#'+test[0] ).offset().top < 0)
     {
-        $( "#window" ).draggable( "option", "disabled", false );
-        $( "#window" ).draggable( "option", "disabled", true );
+        $( '#'+test[0] ).draggable( "option", "disabled", false );
+        $( '#'+test[0] ).draggable( "option", "disabled", true );
     }
 });
-var pos = $('#window').offset();
-document.getElementById("window").style.maxWidth = ( $(window).width() - pos.left - xoffset ) + "px";
-document.getElementById("window").style.maxHeight = ( $(window).height() - pos.top - yoffset ) + "px";
-
+var pos = $( '#'+test[0] ).offset();
+//document.getElementById( test[0] ).style.maxWidth = ( $(window).width() - pos.left - xoffset ) + "px";
+//document.getElementById( test[0] ).style.maxHeight = ( $(window).height() - pos.top - yoffset ) + "px";
+$( '#'+test[0] ).css({ "max-height": $(window).height() - pos.top - yoffset + 'px' });
+$( '#'+test[0] ).css({ "max-width": $(window).width() - pos.left + 'px' });
 
 //restore window is something unexpected happens, like godzilla eats it.
 var start = document.getElementById('start-button');
 start.addEventListener("click", function() {
-	$("#window").offset({top:0, left:0});
+	$( '#'+test[0] ).offset({top:0, left:0});
 	});
 start.addEventListener("mouseover", function() {
 	$("#start-tips").removeClass("hide");
