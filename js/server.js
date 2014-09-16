@@ -19,6 +19,10 @@ io.on('connection', function(socket){
   		handleMessage(io, socket, msg);
   	});
   
+  socket.on('join', function(msg){
+    joinChat(io, socket, msg);
+  });
+
   socket.on('disconnect', function(){
       disconnect(io, socket);
     });
@@ -38,11 +42,9 @@ function init(io, socket)
   }
 
   console.log('user: ' + socket.id + " connected and is called " + socket.nickname + ". IP: " + socket.handshake.address);
-  socket.emit('greeting', 'Hey there, ' + socket.nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
   io.emit('notify', 'chatters:' + chatters);
   console.log(chatters);
   socket.emit('notify', 'nick:' + socket.nickname);
-  //io.emit('notify', 'newChatter:' + socket.nickname);
 
   var clients = findClientsSocket();
   for(var i in clients)
@@ -78,14 +80,6 @@ function handleMessage(io, socket, msg)
             if(newNick != undefined)
             {
               changeNick(io, socket, newNick);
-            }
-            break;
-          case '/join':
-            var newNick = msg.split(" ")[1];
-            console.log(newNick);
-            if(newNick != undefined)
-            {
-              joinChat(io, socket, newNick);
             }
             break;
           case '!help':
@@ -167,8 +161,10 @@ function changeNick(io, socket, nick)
     }
 }
 
-function joinChat(io, socket, nick)
+function joinChat(io, socket, msg)
 {
+  var nick = msg.split(" ")[0];
+  console.log(nick);
   var found = false;
   var clients = findClientsSocket();
   for (var i = 0; i < clients.length && !found; i++) 
@@ -184,12 +180,13 @@ function joinChat(io, socket, nick)
         io.emit('notify', "newChatter:" + nick);
         clients[i].nickname = nick;
         console.log(clients[i].id + " is now " + clients[i].nickname);
-        clients[i].emit('nickFree', 'ok:1');
+        clients[i].emit('join', 'ok:1');
+        socket.emit('greeting', 'Hey there, ' + clients[i].nickname + '. Welcome to this nostalgia trip! You can change your nick with /nick nick. Say !help at any time for more info.');
       }
       else
       {
         console.log("nick taken");
-        clients[i].emit('nickFree', 'ok:0');
+        clients[i].emit('join', 'ok:no');
         console.log("emit to " + clients[i].nickname);
       }
     }

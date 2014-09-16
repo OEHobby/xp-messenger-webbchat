@@ -4,11 +4,22 @@ var onlines = [];
 
 //welcome nick-picker
 $('#nick-form').submit(function(){
-	socket.emit('chat message', "/join " + $('#nick-picker').val());
+	console.log("nick-form submit");
+	socket.emit('join', $('#nick-picker').val());
+	$('#nick-picker').val('');
 	return false;
   });
 
-socket.on('nickFree', function(msg){
+//messages
+$('#message-form').submit(function(){
+	socket.emit('chat message', $('#m').val());
+	$('#m').val('');
+	$("#smiley-picker").addClass('hide');
+	return false;
+  });
+
+
+socket.on('join', function(msg){
 		console.log(msg.split(":")[1]);
 		if(msg.split(":")[1] == '1')
 		{
@@ -20,17 +31,12 @@ socket.on('nickFree', function(msg){
 		}
 		else
 		{
-			$('#welcome-form-holder').html( $('#welcome-form-holder').html() + "<p>Nick taken, choose another one.</p>");
+			console.log("taken");
+			$('#nick-form').html( "<label>Nick taken, choose another one.</label>" + $('#nick-form').html());
+			$('#nick-picker').val(myNickname);
+			$('#nick-picker').css('background', 'rgba(255,0,0,0.5');
 		}
-	});
-
-//messages
-$('#message-form').submit(function(){
-	socket.emit('chat message', $('#m').val());
-	$('#m').val('');
-	$("#smiley-picker").addClass('hide');
-	return false;
-  });
+});
 
 socket.on('chat message', function(msg){
 	console.log(msg);
