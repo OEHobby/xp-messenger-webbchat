@@ -34,7 +34,6 @@ socket.on('join', function(msg){
 			console.log("taken");
 			$('#nick-form').html( "<label>Nick taken, choose another one.</label>" + $('#nick-form').html());
 			$('#nick-picker').val(myNickname);
-			$('#nick-picker').css('background', 'rgba(255,0,0,0.5');
 		}
 });
 

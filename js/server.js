@@ -199,11 +199,14 @@ function nickTaken(nick)
 	var clients = findClientsSocket();
 	for(var i in clients)
 	{
-		if(clients[i].nickname == nick)
-		{
-			console.log(clients[i].nickname + " is same as " + nick);
-			bool = true;
-		}
+    if(clients[i].nickname != undefined)
+    {
+  		if(clients[i].nickname.toLowerCase() == nick.toLowerCase())
+  		{
+  			console.log(clients[i].nickname + " is same as " + nick);
+  			bool = true;
+  		}
+    }
 	}
 	return bool;
 }
