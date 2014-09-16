@@ -88,14 +88,6 @@ function handleMessage(io, socket, msg)
             msg += 'Press Start to reset window position. Press a display picture to change to random new one. <a href="https://github.com/OEHobby/xp-messenger-webbchat" target="_blank">Project on Git</a>';
             socket.emit('greeting', msg);
             break;
-          case '!send':
-            var widget = createSpotifyWidget(msg);
-            if(widget != 0)
-            {
-              widget = socket.nickname + ": " + widget;
-              io.emit('chat message', widget);
-            }
-            break;
           case '!nudge':
             console.log("lastNudge: " + lastNudge);
             if((new Date().getTime() - lastNudge) > 1000)
@@ -114,10 +106,6 @@ function handleMessage(io, socket, msg)
       {
         if(msg != "" && msg != " ")
         {
-          /*if(isLink(msg))
-          {
-            msg = createLink(msg);
-          }*/
           msg = socket.nickname + ": " + msg;
           io.emit('chat message', msg);
           console.log(msg);
@@ -223,62 +211,6 @@ function findClientsSocket(roomId, namespace) {
         }
     }
     return res;
-}
-/*
-function isLink(msg)
-{
-  var bool = false;
-  if( msg.indexOf("http://") > -1)
-  {
-    bool = true;
-    console.log("found http://");
-  }
-  return bool;
-}
-
-function createLink(msg) //fix problem with the need of space after link. Fix more than one link.
-{
-  var linkStart;
-  var link;
-  var linkEnd = 0;
-  linkStart = msg.indexOf("http://");
-  console.log("linkstart: " + linkStart);
-  console.log("found one link");
-  linkEnd = msg.indexOf(" ", linkStart);
-  console.log("linkend: " + linkEnd);
-  link = msg.slice(linkStart, (linkEnd+1));
-  console.log(link);
-  msg = msg.replace(link, "<a href=''" + link + "'' target='_blank'>" + link + "</a>");
-
-  return msg;
-}
-*/
-function createSpotifyWidget(msg)
-{
-  var widget = 0;
-  var id = "";
-  if(msg.indexOf("spotify.com/track/") > -1)
-  {
-    id = msg.split("spotify.com/track/")[1];
-  }
-
-  else if(msg.indexOf("spotify:track:") > -1)
-  {
-    id = msg.split("spotify:track:")[1];
-  }
-
-  if(id.split(" ")[0])
-  {
-     id = id.split(" ")[0];
-  }
-
-  console.log(id);
-  if(id != "")
-  {
-    widget = "<iframe src='https://embed.spotify.com/?uri=spotify:track:" + id + "' width='500px' height='80px' frameborder='0' allowtransparency='true'></iframe>";
-  }
-
-  return widget;
 }
 
 function privMsg(socket, msg, namespace)

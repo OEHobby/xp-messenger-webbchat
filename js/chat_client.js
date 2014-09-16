@@ -209,10 +209,49 @@ function createLink(msg) //fix problem with the need of space after link. Fix mo
 
 			console.log("linkend: " + linkEnd);
 			link = msg.slice((linkStart+3), (linkEnd));
-			console.log(link);
-			msg = msg.replace(link, "<a href='//" + link + "' target='_blank'>" + link + "</a>");
-			console.log("ett varv");
+			if(msg.indexOf("spotify.com/track/") > -1)
+			{
+				var widget = createSpotifyWidget(link);
+				msg = msg.replace(link, "<a href='//" + link + "' target='_blank'>" + link + "</a>" + widget);
+			}
+			else
+			{
+				console.log(link);
+				msg = msg.replace(link, "<a href='//" + link + "' target='_blank'>" + link + "</a>");
+				console.log("ett varv");
+			}
+			msg = msg.replace("http://", "");
+			msg = msg. replace("https://", "");
 		}
 	}
   return msg;
+}
+
+
+function createSpotifyWidget(msg)
+{
+  var widget = 0;
+  var id = "";
+  if(msg.indexOf("spotify.com/track/") > -1)
+  {
+    id = msg.split("spotify.com/track/")[1];
+  }
+
+  else if(msg.indexOf("spotify:track:") > -1)
+  {
+    id = msg.split("spotify:track:")[1];
+  }
+
+  if(id.split(" ")[0])
+  {
+     id = id.split(" ")[0];
+  }
+
+  console.log(id);
+  if(id != "")
+  {
+    widget = "<iframe src='//embed.spotify.com/?uri=spotify:track:" + id + "' width='500px' height='80px' frameborder='0' allowtransparency='true'></iframe>";
+  }
+
+  return widget;
 }
