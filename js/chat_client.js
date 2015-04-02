@@ -11,13 +11,17 @@ $('#nick-form').submit(function(){
   });
 
 //messages
-$('.message-form').submit(function(){
-	socket.emit('chat message', $('.m').val());
-	$('.m').val('');
-	$(".smiley-picker").addClass('hide');
-	return false;
-  });
-
+/*for(var i = 0; i < windows.length; i++)
+{*/
+	$('#message-form-0').submit(function(){
+		console.log("submit");
+		var x = 0;
+		socket.emit('chat message', $('.m-0').val());
+		$('.m-0').val('');
+		$(".smiley-picker").addClass('hide');
+		return false;
+	  });
+//}
 
 socket.on('join', function(msg){
 		console.log(msg.split(":")[1]);
@@ -122,7 +126,7 @@ socket.on('notify', function(msg){
 		case 'newChatter':
 			if(myNickname != info)
 			{
-				$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has logged in.</p>');
+				//$('.chatWindow').html( $('.chatWindow').html() + '<p class="chatTitle">Boten Anna said:</p>' + '<p class="chatMessage">' + info + ' has logged in.</p>');
 				$('.login-win-nick').html(info);
 				$('.login-win').removeClass('hide');
 				window.setTimeout(function(){

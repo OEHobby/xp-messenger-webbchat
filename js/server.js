@@ -61,7 +61,7 @@ function disconnect(io, socket)
 {
   chatters -= 1;
   io.emit('notify', 'chatters:' + chatters);
-  io.emit('greeting', socket.nickname + " has logged out.");
+  //io.emit('greeting', socket.nickname + " has logged out.");
   io.emit('disconnect', socket.nickname);
   console.log(socket.nickname + ' disconnected');
 }
@@ -90,7 +90,7 @@ function handleMessage(io, socket, msg)
             break;
           case '!nudge':
             console.log("lastNudge: " + lastNudge);
-            if((new Date().getTime() - lastNudge) > 1000)
+            if((new Date().getTime() - lastNudge) > 5000)
             {
               io.emit('notify', "nudge");
               lastNudge = new Date().getTime(); 

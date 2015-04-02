@@ -313,8 +313,8 @@
 	position: absolute;
 	height: 20px;
 	width: 45px;
-	bottom: 5px;
-	right: 95px;
+	bottom: -25px;
+	right: 5px;
 }
 
 .chatTitle
