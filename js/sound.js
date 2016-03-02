@@ -30,22 +30,22 @@ function playSound(type)
 		switch(type)
 		{
 			case 'message':
-				var audio = new Audio('//91.123.195.81/chat/audio/message.mp3');
+				var audio = new Audio('//root.oskaremilsson.se/chat/audio/message.mp3');
 				if(!$(".m").is(":focus"))
 				{
 					audio.play();
 				}
 				break;
 			case 'nudge':
-				var audio = new Audio('//91.123.195.81/chat/audio/nudge.mp3');
+				var audio = new Audio('//root.oskaremilsson.se/chat/audio/nudge.mp3');
 				audio.play();
 				break;
 			case 'login':
-				var audio = new Audio('//91.123.195.81/chat/audio/login.mp3');
+				var audio = new Audio('//root.oskaremilsson.se/chat/audio/login.mp3');
 				audio.play();
 				break;
 			case 'startup':
-				var audio = new Audio('//91.123.195.81/chat/audio/startup.mp3');
+				var audio = new Audio('//root.oskaremilsson.se/chat/audio/startup.mp3');
 				audio.play();
 				break;
 		}
